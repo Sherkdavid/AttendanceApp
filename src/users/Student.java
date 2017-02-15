@@ -3,10 +3,10 @@ package users;
 public class Student extends User {
 	String course_id;
 	int year;
-	public Student(String id, String name, String course, String mail)
+	public Student(String id, String name, String course, String mail, int year)
 	{
 		super(id,name,mail);
-		year = 1;
+		setYear(year);
 		setCourse(course);
 	}
 	private void setCourse(String course)
@@ -16,6 +16,11 @@ public class Student extends User {
 	public String getCourseId()
 	{
 		return course_id;
+	}
+	
+	public void setYear(int year)
+	{
+		this.year = year;
 	}
 	
 	public void incrementYear()

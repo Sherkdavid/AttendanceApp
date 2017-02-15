@@ -1,14 +1,23 @@
 package modules;
-import users.*;
 public class Module
 {
-	String id, name;
-	Lecturer coordinator;
-	public Module(String id, String name, Lecturer head)
+	String id, name, lecturer_id, dept_id;
+	public Module(String id, String name, String lecturer_id, String dept_id)
 	{
 		setId(id);
 		setName(name);
-		setCoordinator(head);
+		setLecturer(lecturer_id);
+		setDepartment(dept_id);
+	}
+	
+	private void setDepartment(String department)
+	{
+		dept_id = department;
+	}
+	
+	public String getDepartment()
+	{
+		return dept_id;
 	}
 	
 	private void setId(String id)
@@ -31,9 +40,14 @@ public class Module
 		return name;
 	}
 	
-	private void setCoordinator(Lecturer l)
+	private void setLecturer(String lecturer)
 	{
-		coordinator = l;
+		lecturer_id = lecturer;
+	}
+	
+	public String getLecturer()
+	{
+		return lecturer_id;
 	}
 	
 	
