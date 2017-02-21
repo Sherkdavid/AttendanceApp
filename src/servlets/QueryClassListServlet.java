@@ -51,20 +51,25 @@ public class QueryClassListServlet extends QueryServlet {
 			//Execute query
 			ResultSet result = query.executeQuery(sql);
 			ArrayList<Student> list = new ArrayList();
+			//parse result set
 			while(result.next())
 			{
 				list.add(new Student(result.getString("student_id"), result.getString("name"), result.getString("email")));
 			}
+			//close result set
 			result.close();
+			//write result list to output stream
 			ObjectOutputStream obj_out = new ObjectOutputStream(response.getOutputStream());
 			obj_out.writeObject(list);
 			obj_out.flush();
+			//Close output stream
 			obj_out.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//parse results and send to clients via output strea
+		//close database connection
+		disconnect();
 	}
 
 }
