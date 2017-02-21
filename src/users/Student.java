@@ -9,6 +9,10 @@ public class Student extends User {
 		setYear(year);
 		setCourse(course);
 	}
+	public Student(String id, String name, String mail)
+	{
+		super(id,name,mail);
+	}
 	private void setCourse(String course)
 	{
 		course_id = course;
