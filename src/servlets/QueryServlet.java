@@ -26,19 +26,26 @@ public class QueryServlet extends HttpServlet {
     
     public void connect() throws ServletException
     {
-    	final String JDBC_DRIVER = "";
-    	final String DB_URL = "";
-    	final String user = "";
-    	final String password = "";
+    	final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+    	final String DB_URL = "jdbc:mysql://localhost/db";
+    	final String user = "jdbc_user";
+    	final String password = "letmein";
     	
     	try {
-			Class.forName(JDBC_DRIVER);
+			Class.forName(JDBC_DRIVER).newInstance();
 			conn = DriverManager.getConnection(DB_URL, user, password);
 			query = conn.createStatement();
+			System.err.println("Connection Established");
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -49,6 +56,7 @@ public class QueryServlet extends HttpServlet {
     	try {
 			query.close();
 			conn.close();
+			System.err.println("Connection closed");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
