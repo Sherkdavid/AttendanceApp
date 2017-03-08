@@ -36,7 +36,7 @@ public class QueryServlet extends HttpServlet {
 			conn = DriverManager.getConnection(DB_URL, user, password);
 			query = conn.createStatement();
 			System.err.println("Connection Established");
-		} catch (ClassNotFoundException e) {
+    	} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -57,6 +57,30 @@ public class QueryServlet extends HttpServlet {
 			query.close();
 			conn.close();
 			System.err.println("Connection closed");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
+    
+    public void testQuery(String req)
+    {
+		try {
+			ResultSet set = query.executeQuery(req);
+			while(set.next())
+			{
+				System.out.println(set.getString(1) + " " + set.getString(2) + " " + set.getString(3));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
+    
+    public void testInsert(String req)
+    {
+    	try {
+			query.execute(req);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

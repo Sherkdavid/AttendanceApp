@@ -38,22 +38,23 @@ PRIMARY KEY (lecturer_id)
 );
 
 
-CREATE TABLE module1
+CREATE TABLE module
 (
-module_id varchar(255) UNIQUE,
+module_id varchar(255) UNIQUE NOT NULL,
+title varchar(255),
 course_id varchar(255),
 lecturer_id varchar(255)
-PRIMARY KEY (module_id),
-FOREIGN KEY (course_id) REFERENCES course(course_id)
-);
+)engine=innodb;
 
-CREATE TABLE class1
+alter table module add constraint pk_module primary key(module_id);
+alter table module add constraint fk_module foreign key (course_id) REFERENCES course(course_id) on delete cascade on update no action;
+
+CREATE TABLE class
 (
 class_id varchar(255),
-title varchar(255) NOT NULL,
 module_id varchar(255),
 lecturer_id varchar(255),
-FOREIGN KEY (module_id) REFERENCES module1(module_id),
+FOREIGN KEY (module_id) REFERENCES module(module_id),
 FOREIGN KEY (lecturer_id) REFERENCES lecturer(lecturer_id)
 );
 
@@ -78,7 +79,7 @@ VALUES ('DNET', 'L889');
 
 
 INSERT INTO student (student_id, name, course_id, acc_year, email)
-VALUES('R003', 'Mike Smith', 'COM', '1st', 'Mike@cit.ie');
+VALUES('R003', 'Mike Smith', 'COM', '1', 'Mike@cit.ie');
 
 INSERT INTO student (student_id, name, course_id, acc_year, email)
 VALUES ('R546', 'David O Connor', 'DNET', '2nd', 'David@cit.ie');
@@ -91,8 +92,8 @@ INSERT INTO classList (student_id, class_id)
 VALUES ('R546', 'C789');
 
 
-INSERT INTO lecturer (lecturer_id, lecturerName, lecturerEmail)
-VALUES ('L123', 'Molly Smith' 'Molly@cit.ie');
+INSERT INTO lecturer(lecturer_id, lecturerName, lecturerEmail)
+VALUES ('L123', 'Molly Smith', 'Molly@cit.ie');
 
 INSERT INTO lecturer (lecturer_id, lecturerName, lecturerEmail)
 VALUES ('L889', 'Aaron Rodgers', 'Aaron@cit.ie');
