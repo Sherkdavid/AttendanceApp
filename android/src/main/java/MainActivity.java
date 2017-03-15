@@ -1,10 +1,14 @@
-package com.example.kieran.attnedancetracker;
+package com.example.sean.attendanceapp;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import com.example.sean.attendanceapp.LecturerHomescreen;
+import com.example.sean.attendanceapp.R;
+import com.example.sean.attendanceapp.StudentHomescreen;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,11 +23,11 @@ public class MainActivity extends AppCompatActivity {
 
             public void onClick(View arg0) {
 
-                    Intent myIntent = new Intent(MainActivity.this,
-                            LecturerHomescreen.class);
-                    startActivity(myIntent);
-                }
-            });
+                Intent myIntent = new Intent(MainActivity.this,
+                        LecturerHomescreen.class);
+                startActivity(myIntent);
+            }
+        });
 
 
         //Test to launch student homescreen

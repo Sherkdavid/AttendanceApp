@@ -1,4 +1,4 @@
-package com.example.kieran.attnedancetracker;
+package com.example.sean.attendanceapp;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
