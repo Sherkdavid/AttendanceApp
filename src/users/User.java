@@ -1,12 +1,19 @@
 package users;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
 	String id, name, email;
+
 	public User(String id, String name, String mail)
 	{
 		setId(id);
 		setName(name);
 		setEmail(mail);
+	}
+	public User()
+	{
+		
 	}
 	
 	private void setEmail(String mail) {

@@ -1,17 +1,30 @@
 package test;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import javax.servlet.ServletException;
 
 import servlets.*;
+import users.Student;
 public class DatabaseTest {
 
-	public static void main(String[] args) throws ServletException {
-		// TODO Auto-generated method stub
-		//INSERT INTO lecturer(lecturer_id, lecturerName, lecturerEmail) VALUES ('CITF005', 'John Adams', 'jAdams@cit.ie');
-		QueryServlet qs = new QueryServlet();
-		qs.connect();
-		//qs.testInsert("INSERT INTO lecturer(lecturer_id, lecturerName, lecturerEmail) VALUES ('CITF005', 'John Adams', 'jAdams@cit.ie')");
-		qs.testQuery("SELECT * FROM lecturer");
-		qs.disconnect();
+	public static void main(String[] args) {
+		GetServletObject req = new GetServletObject("http://localhost:8080/GroupProject/");
+		ArrayList<Student> results;
+		try {
+			//Must cast for expected object
+			HashMap<String, String> map = new HashMap<String, String>();
+			map.put("class_id", "AOOP1");
+			results = (ArrayList<Student>) req.sendPostRequest("QueryStudentsByClassID",map);
+			for(Student o:results)
+			{
+				System.err.println(o.toString());
+			}
+		} catch (ServletException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

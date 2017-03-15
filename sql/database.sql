@@ -38,16 +38,7 @@ PRIMARY KEY (lecturer_id)
 );
 
 
-CREATE TABLE module
-(
-module_id varchar(255) UNIQUE NOT NULL,
-title varchar(255),
-course_id varchar(255),
-lecturer_id varchar(255)
-)engine=innodb;
-
-alter table module add constraint pk_module primary key(module_id);
-alter table module add constraint fk_module foreign key (course_id) REFERENCES course(course_id) on delete cascade on update no action;
+x
 
 CREATE TABLE class
 (
@@ -66,6 +57,9 @@ date date,
 attendance integer(10) NOT NULL,
 class_id integer(10)
 );
+select module_id, lecturer_id
+FROM module
+WHERE module_id = 'AOOP';
 
 
 INSERT INTO course (course_id, lecturer_id)

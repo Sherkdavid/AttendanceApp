@@ -69,7 +69,7 @@ public class QueryServlet extends HttpServlet {
 			ResultSet set = query.executeQuery(req);
 			while(set.next())
 			{
-				System.out.println(set.getString(1) + " " + set.getString(2) + " " + set.getString(3));
+				System.out.println(set.getString(1) + " " + set.getString(2));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

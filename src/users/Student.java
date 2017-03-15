@@ -1,13 +1,20 @@
 package users;
 
-public class Student extends User {
+import java.io.Serializable;
+
+public class Student extends User implements Serializable {
 	String course_id;
 	int year;
+	
 	public Student(String id, String name, String course, String mail, int year)
 	{
+		
 		super(id,name,mail);
 		setYear(year);
 		setCourse(course);
+	}
+	public Student()
+	{
 	}
 	public Student(String id, String name, String mail)
 	{
@@ -35,8 +42,9 @@ public class Student extends User {
 	{
 		return year;
 	}
-	
-	
-	
+	public String toString()
+	{
+		return getName()+ " : " + getCourseId();
+	}	
 
 }

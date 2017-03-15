@@ -19,14 +19,14 @@ import users.Student;
 /**
  * Servlet implementation class QueryClassListServlet
  */
-@WebServlet("/QueryClassListServlet")
-public class QueryClassListServlet extends QueryServlet {
+@WebServlet("/QueryStudentsByClassID")
+public class QueryStudentsByClassID extends QueryServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public QueryClassListServlet() {
+	public QueryStudentsByClassID() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -45,8 +45,8 @@ public class QueryClassListServlet extends QueryServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		connect();
 		//Build sql query
-		String sql = "Select student_id FROM ClassList WHERE class_id = " + request.getAttribute("class_id") 
-					+ " LEFT JOIN Students ON ClassList.class_id=Student.class_id";
+		String sql = "Select student.student_id, student.name,student.course_id,student.acc_year,student.email,classlist.class_id FROM classlist " 
+					+ "LEFT JOIN student ON classlist.student_id=student.student_id AND classlist.class_id ='"+request.getParameter("class_id")+"'";
 		try {
 			//Execute query
 			ResultSet result = query.executeQuery(sql);
@@ -54,19 +54,22 @@ public class QueryClassListServlet extends QueryServlet {
 			//parse result set
 			while(result.next())
 			{
-				list.add(new Student(result.getString("student_id"), result.getString("name"), result.getString("email")));
+				list.add(new Student(result.getString("student_id"), result.getString("name"), result.getString("course_id"),result.getString("email"),result.getInt("acc_year")));
 			}
 			//close result set
 			result.close();
 			//write result list to output stream
 			ObjectOutputStream obj_out = new ObjectOutputStream(response.getOutputStream());
 			obj_out.writeObject(list);
-			obj_out.flush();
-			//Close output stream
 			obj_out.close();
+			//obj_out.close();
+			//Close output stream
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+		finally
+		{
 		}
 		//close database connection
 		disconnect();
