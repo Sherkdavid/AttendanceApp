@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout
+    android:id="@+id/table"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:stretchColumns="*"
+    android:background="@drawable/app_background"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="134dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Module"
+            android:id="@+id/moduletxt"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp" />
+
+        <Spinner
+            android:layout_width="110dp"
+            android:layout_height="44dp"
+            android:id="@+id/moduleDropdown"
+            android:layout_gravity="center_horizontal"
+            android:spinnerMode="dropdown"
+            android:entries="@array/classGroup_arrays"
+            android:prompt="@string/classGroup_prompt"
+            android:layout_marginTop="20dp" />
+
+    </LinearLayout>
+
+    <TableRow
+        android:id="@+id/tableRow1"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:background="#87ceeb" >
+
+        <TextView
+            android:id="@+id/studentIDtxt"
+            android:paddingBottom="10dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingTop="10dp"
+            android:text="studentID"
+            android:textColor="#FFFFFF"
+            android:layout_height="fill_parent"
+            android:textSize="17dp"
+            android:layout_width="wrap_content" />
+
+        <LinearLayout
+            android:layout_width="1dp"
+            android:layout_height="match_parent" >
+
+            <View style="@style/Divider" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/nametxt"
+            android:paddingBottom="10dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingTop="10dp"
+            android:text="@string/name"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:layout_width="1dp"
+            android:layout_height="match_parent" >
+
+            <View style="@style/Divider" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/attendancetxt"
+            android:paddingBottom="10dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingTop="10dp"
+            android:text="Attendance"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+
+
+        <LinearLayout
+            android:layout_width="1dp"
+            android:layout_height="match_parent" >
+
+            <View style="@style/Divider" />
+        </LinearLayout>
+
+    </TableRow>
+
+    <!-- display this button in 3rd column via layout_column(zero based) -->
+
+    <TableRow
+        android:id="@+id/tableRow2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#87ceeb" >
+
+        <TextView
+            android:id="@+id/textView21"
+            android:padding="5dp"
+            android:text="R00123456"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:layout_width="1dp"
+            android:layout_height="match_parent" >
+
+            <View style="@style/Divider" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView22"
+            android:padding="5dp"
+            android:text="Joe Bloggs"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:layout_width="1dp"
+            android:layout_height="match_parent" >
+
+            <View style="@style/Divider" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/attendancePercent"
+            android:padding="5dp"
+            android:text="60%"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:layout_width="1dp"
+            android:layout_height="match_parent" >
+
+            <View style="@style/Divider" />
+        </LinearLayout>
+
+
+    </TableRow>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="364dp">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Home"
+            android:id="@+id/homeBtn"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="50dp" />
+    </LinearLayout>
+
+</TableLayout>

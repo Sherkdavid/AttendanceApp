@@ -1,3 +1,15 @@
 <resources>
-    <string name="app_name">Attendance Tracker</string>
+    <string name="app_name">Attendance App</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_take_attendance">TakeAttendance</string>
+    <string name="date">Date</string>
+    <string name="studentNum">Student No.</string>
+    <string name="name">Name</string>
+    <string name="Class">Class</string>
+    <string name="absent">Absent</string>
+    <string name="classGroup_prompt">Class Group</string>
+    <string-array name="classGroup_arrays">
+        <item>Com3</item>
+    </string-array>
+    <string name="title_activity_review_attendance">ReviewAttendance</string>
 </resources>
