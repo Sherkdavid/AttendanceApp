@@ -11,7 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import users.Lecturer;
+import users.Faculty;
 
 /**
  * Servlet implementation class QueryLecturerByClass

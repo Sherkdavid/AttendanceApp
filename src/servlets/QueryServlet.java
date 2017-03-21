@@ -1,12 +1,20 @@
 package servlets;
 
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import test.DatabaseTest;
+import test.GetServletObject;
+import users.Student;
 
 /**
  * Servlet implementation class QueryServlet
@@ -77,22 +85,33 @@ public class QueryServlet extends HttpServlet {
 		}
     }
     
-    public void testInsert(String req)
+    protected void sendResult(HttpServletRequest req, HttpServletResponse res, Object result)
     {
-    	try {
-			query.execute(req);
-		} catch (SQLException e) {
+		ObjectOutputStream obj_out;
+		try {
+			obj_out = new ObjectOutputStream(res.getOutputStream());
+			obj_out.writeObject(result);
+			obj_out.close();
+		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     }
-
+    
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * Sample usage of GetServletObject class
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("class_id", "AOOP1");
+		GetServletObject req = new GetServletObject("http://localhost:8080/GroupProject/");
+		ArrayList<Student> list = (ArrayList<Student>)req.sendPostRequest("QueryStudentsByClassID", map);
+		for(Student s: list)
+		{
+			response.getWriter().println(s.toString());
+		}
 	}
 
 	/**

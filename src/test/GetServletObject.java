@@ -85,7 +85,6 @@ public class GetServletObject {
 		HttpURLConnection connection;
 		Object result = null;
 		try {
-			//String query = key + "="+URLEncoder.encode(param, charset);
 			connection = connect(servlet);
 			OutputStream stream;
 			stream = connection.getOutputStream();

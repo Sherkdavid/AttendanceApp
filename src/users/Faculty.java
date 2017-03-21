@@ -1,8 +1,8 @@
 package users;
 
-public class Lecturer extends User{	String department;
+public class Faculty extends User{	String department;
 	
-	public Lecturer(String id, String name, String mail, String department) {
+	public Faculty(String id, String name, String mail, String department) {
 		super(id, name, mail);
 	}
 	

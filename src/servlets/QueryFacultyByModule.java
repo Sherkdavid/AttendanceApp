@@ -3,6 +3,7 @@ package servlets;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.servlet.Servlet;
 import javax.servlet.ServletException;
@@ -10,17 +11,19 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import users.Faculty;
+
 /**
- * Servlet implementation class QueryLecturerByModule
+ * Servlet implementation class QueryFacultyByModule
  */
-@WebServlet("/QueryLecturerByModule")
-public class QueryLecturerByModule extends QueryServlet implements Servlet {
+@WebServlet("/QueryFacultyByModule")
+public class QueryFacultyByModule extends QueryServlet implements Servlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see QueryServlet#QueryServlet()
      */
-    public QueryLecturerByModule() {
+    public QueryFacultyByModule() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -38,16 +41,18 @@ public class QueryLecturerByModule extends QueryServlet implements Servlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		connect();
-		String sql = "Select module_id, lecturer_id"
+		String sql = "SELECT module.faculty_id, faculty.id, faculty.name, faculty.email, faculty.department"
 				+ "FROM module"
-				+ "WHERE module_id = " + request.getAttribute("module_id")
-				+ "LEFT JOIN lecturer ON module.lecturer_id=lecturer.lecturer_id";
+				+ "LEFT JOIN faculty ON module.id =" + request.getParameter("module_id")
+				+ "AND module.faculty_id=faculty.id";
 		try {
 			ResultSet result = query.executeQuery(sql);
+			ArrayList<Faculty> list = new ArrayList<Faculty>();
 			while(result.next())
 			{
-				System.err.println(result.getString(0) + " : " + result.getString(1) + " : " +result.getString(2) + " : " + result.getString(3));
+				list.add(new Faculty(result.getString("id"),result.getString("name"),result.getString("email"),result.getString("department")));
 			}
+			sendResult(request,response,list);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

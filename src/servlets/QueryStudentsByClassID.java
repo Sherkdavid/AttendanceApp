@@ -50,7 +50,7 @@ public class QueryStudentsByClassID extends QueryServlet {
 		try {
 			//Execute query
 			ResultSet result = query.executeQuery(sql);
-			ArrayList<Student> list = new ArrayList();
+			ArrayList<Student> list = new ArrayList<Student>();
 			//parse result set
 			while(result.next())
 			{
@@ -59,17 +59,10 @@ public class QueryStudentsByClassID extends QueryServlet {
 			//close result set
 			result.close();
 			//write result list to output stream
-			ObjectOutputStream obj_out = new ObjectOutputStream(response.getOutputStream());
-			obj_out.writeObject(list);
-			obj_out.close();
-			//obj_out.close();
-			//Close output stream
+			sendResult(request, response, list);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		finally
-		{
 		}
 		//close database connection
 		disconnect();
