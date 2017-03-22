@@ -13,8 +13,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
 
-import javax.servlet.ServletException;
-
 import com.mysql.fabric.xmlrpc.base.Param;
 
 import users.Student;
@@ -102,7 +100,7 @@ public class GetServletObject {
 		}
 		if (result==null)
 		{
-			throw new ServletException("No object returned by Servlet");
+			throw new Exception("No object returned by Servlet");
 		}
 		return result;
 		

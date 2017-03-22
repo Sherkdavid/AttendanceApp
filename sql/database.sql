@@ -71,12 +71,16 @@ VALUES ('DCOM', 'L353');
 INSERT INTO course (course_id, lecturer_id)
 VALUES ('DNET', 'L889');
 
+INSERT INTO department (name)
+VALUES ('Computing');
+
+SELECT * FROM faculty;
 
 INSERT INTO student (student_id, name, course_id, acc_year, email)
 VALUES('R003', 'Mike Smith', 'COM', '1', 'Mike@cit.ie');
 
 INSERT INTO student (student_id, name, course_id, acc_year, email)
-VALUES ('R546', 'David O Connor', 'DNET', '2nd', 'David@cit.ie');
+VALUES ('R546', 'David O Connor', 'DNET', '2', 'David@cit.ie');
 
 
 INSERT INTO classList (student_id, class_id)

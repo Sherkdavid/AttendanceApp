@@ -15,13 +15,15 @@ public class DatabaseTest {
 	public static void main(String[] args) {
 		ArrayList<Student> results;
 		try {
-			//Must cast for expected object
-			GetServletObject req = new GetServletObject("http://138.68.147.88:8080/GroupProject/");
+	
+			//Insert example 
+			GetServletObject req = new GetServletObject("http://localhost:8080/GroupProject/");
 			HashMap<String, String> map = new HashMap<String, String>();
-			map.put("class_id", "AOOP1");
-			boolean result;
-			result = (boolean) req.sendPostRequest("TestServlet",map);
-			System.out.print(result);
+			map.put("faculty_id", "R0012020");
+			map.put("name", "David Murphy");
+			map.put("email", "dmurphy10@mycit.ie");
+			map.put("department", "Computing");
+			req.sendPostRequest("InsertIntoFaculty",map);
 			
 		} catch (ServletException e) {
 			// TODO Auto-generated catch block
