@@ -45,8 +45,8 @@ public class QueryStudentsByClassID extends QueryServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		connect();
 		//Build sql query
-		String sql = "Select student.student_id, student.name,student.course_id,student.acc_year,student.email,classlist.class_id FROM classlist " 
-					+ "LEFT JOIN student ON classlist.student_id=student.student_id AND classlist.class_id ='"+request.getParameter("class_id")+"'";
+		String sql = "Select student.student_id, student.name,student.course_id,student.year,student.email,enrolment.class_id FROM enrolment " 
+					+ "LEFT JOIN student ON enrolment.class_id ='"+request.getParameter("class_id")+"'" + "AND enrolment.student_id=student.student_id";
 		try {
 			//Execute query
 			ResultSet result = query.executeQuery(sql);
@@ -64,8 +64,8 @@ public class QueryStudentsByClassID extends QueryServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
 		//close database connection
 		disconnect();
 	}
-
 }

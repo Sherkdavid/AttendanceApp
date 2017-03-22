@@ -1,4 +1,4 @@
-package test;
+package tools;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.OutputStream;
@@ -91,7 +91,7 @@ public class GetServletObject {
 			stream.write(query.getBytes(charset));
 			stream.flush();
 			//connection.get
-			result = (ArrayList<Student>) getResult(connection);
+			result = getResult(connection);
 			stream.close();
 			connection.disconnect();
 		}  catch (IOException e) {

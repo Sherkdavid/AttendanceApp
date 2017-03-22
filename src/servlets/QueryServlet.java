@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import test.DatabaseTest;
-import test.GetServletObject;
+import tools.GetServletObject;
 import users.Student;
 
 /**
