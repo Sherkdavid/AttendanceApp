@@ -58,7 +58,7 @@ public class GetServletObject {
 		return result;
 	}
 	
-	public Object sendPostRequest(String servlet, HashMap<String, String> params) throws ServletException
+	public Object sendPostRequest(String servlet, HashMap<String, String> params) throws Exception
 	{
 		/**
 		 * Will be updating this to use map
