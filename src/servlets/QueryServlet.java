@@ -102,16 +102,8 @@ public class QueryServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 * Sample usage of GetServletObject class
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		HashMap<String, String> map = new HashMap<String, String>();
-		map.put("class_id", "AOOP1");
-		GetServletObject req = new GetServletObject("http://localhost:8080/GroupProject/");
-		ArrayList<Student> list = (ArrayList<Student>)req.sendPostRequest("QueryStudentsByClassID", map);
-		for(Student s: list)
-		{
-			response.getWriter().println(s.toString());
-		}
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) {
+		
 	}
 
 	/**

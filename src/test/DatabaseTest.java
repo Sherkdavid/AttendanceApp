@@ -25,7 +25,7 @@ public class DatabaseTest {
 			map.put("department", "Computing");
 			req.sendPostRequest("InsertIntoFaculty",map);
 			
-		} catch (ServletException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
