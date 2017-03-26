@@ -12,6 +12,26 @@ import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
 
+    private class TestTask extends AsyncTask<Void,Void,Boolean> {
+
+        @Override
+        protected Boolean doInBackground(Void... params) {
+            boolean b = false;
+            try {
+                b= (boolean) new GetServletObject("http://138.68.147.88:8080/GroupProject/").sendPostRequest("TestServlet", new HashMap<String, String>());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return b;
+        }
+
+        @Override
+        protected void onPostExecute(Boolean b) {
+            final TextView text = (TextView) findViewById(R.id.textView);
+            if(b)
+                text.setText("True");
+        }
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
        super.onCreate(savedInstanceState);
@@ -20,32 +40,10 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    
-					//Network actions must be carried out on a seperate thread to the main UI thread
-					new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-							//Create GetServletObject with host URL
-                            GetServletObject get = new GetServletObject("http://138.68.147.88:8080/GroupProject/");
-                            try {
-								//Any UI Components you want to call in the thread must be instantiated in thread.
-                                final TextView text = (TextView) findViewById(R.id.textView);
-								//Cast for object type
-                                boolean b = (boolean) get.sendPostRequest("TestServlet", new HashMap<String, String>());
-                                if (b)
-                                    text.setText("It Works");
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }).start();
-                }
-                catch(Exception e)
-                {
-                    e.printStackTrace();
-                }
+            new TestTask().execute();
+
             }
+
         });
     }
 }
