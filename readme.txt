@@ -1,0 +1,1 @@
+Any LocalDates must be converted to Timestamp before being to the servlet.

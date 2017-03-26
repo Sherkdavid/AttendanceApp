@@ -1,12 +1,12 @@
 package model;
 
-import java.time.LocalDate;
+import java.sql.Timestamp;
 
 public class Enrolment {
 	private String student_id,class_id;
-	private LocalDate date_of;
+	private Timestamp date_of;
 	
-	public Enrolment(String student, String class_id, LocalDate date)
+	public Enrolment(String student, String class_id, Timestamp date)
 	{
 		this.student_id = student;
 		this.class_id = class_id;
@@ -21,7 +21,7 @@ public class Enrolment {
 		return class_id;
 	}
 
-	public LocalDate getDate_of() {
+	public Timestamp getDate_of() {
 		return date_of;
 	}
 }

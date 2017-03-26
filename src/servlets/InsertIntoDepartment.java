@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class InsertIntoFaculty
+ * Servlet implementation class InsertIntoDepartment
  */
-@WebServlet("/InsertIntoFaculty")
-public class InsertIntoFaculty extends QueryServlet {
+@WebServlet("/InsertIntoDepartment")
+public class InsertIntoDepartment extends QueryServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public InsertIntoFaculty() {
+    public InsertIntoDepartment() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,13 +28,7 @@ public class InsertIntoFaculty extends QueryServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-		try {
-			response.getWriter().append("Served at: ").append(request.getContextPath());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
 	}
 
 	/**
@@ -43,9 +37,8 @@ public class InsertIntoFaculty extends QueryServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String result;
 		connect();
-		String sql = "INSERT INTO faculty(faculty_id,name,email,department)"
-				+ "VALUES ('"+request.getParameter("faculty_id")+"','"+request.getParameter("name")+"','"+
-				request.getParameter("email")+"','"+request.getParameter("department")+"')";
+		String sql = "INSERT INTO department(name,h_o_d)"
+				+ "VALUES ('"+request.getParameter("name")+"','"+request.getParameter("h_o_d")+"')";
 		try {
 			query.execute(sql);
 			result = "Entry successful";

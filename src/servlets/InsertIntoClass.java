@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class InsertIntoFaculty
+ * Servlet implementation class InsertIntoClass
  */
-@WebServlet("/InsertIntoFaculty")
-public class InsertIntoFaculty extends QueryServlet {
+@WebServlet("/InsertIntoClass")
+public class InsertIntoClass extends QueryServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public InsertIntoFaculty() {
+    public InsertIntoClass() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,15 +27,9 @@ public class InsertIntoFaculty extends QueryServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response){
 		// TODO Auto-generated method stub
-		try {
-			response.getWriter().append("Served at: ").append(request.getContextPath());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
-	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -43,9 +37,9 @@ public class InsertIntoFaculty extends QueryServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String result;
 		connect();
-		String sql = "INSERT INTO faculty(faculty_id,name,email,department)"
-				+ "VALUES ('"+request.getParameter("faculty_id")+"','"+request.getParameter("name")+"','"+
-				request.getParameter("email")+"','"+request.getParameter("department")+"')";
+		String sql = "INSERT INTO class(class_id,title,module_id,lecturer_id)"
+				+ "VALUES ('"+request.getParameter("class_id")+"','"+request.getParameter("title")+"','"+
+				request.getParameter("module_id")+"','"+request.getParameter("lecturer_id")+"')";
 		try {
 			query.execute(sql);
 			result = "Entry successful";
@@ -54,7 +48,7 @@ public class InsertIntoFaculty extends QueryServlet {
 			e.printStackTrace();
 		}
 		sendResult(request,response,result);
-		disconnect();
+		disconnect();	
 	}
 
 }

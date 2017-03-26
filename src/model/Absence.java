@@ -1,14 +1,14 @@
 package model;
 
-import java.time.LocalDate;
+import java.sql.Timestamp;
 
 public class Absence
 {
-	LocalDate date;
+	Timestamp date;
 	String student_id, class_id;
 	boolean valid;
 	
-	public Absence(String student, String class_id,LocalDate date)
+	public Absence(String student, String class_id,Timestamp date)
 	{
 		setValid(false);
 		setStudent(student_id);
