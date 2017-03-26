@@ -15,7 +15,7 @@ import java.util.Set;
 
 import com.mysql.fabric.xmlrpc.base.Param;
 
-import users.Student;
+import model.Student;
 /**
  * Class for sending Param's to a servlet and returning an Object
  * @author David

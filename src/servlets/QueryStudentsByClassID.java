@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.sun.corba.se.spi.orbutil.fsm.Guard.Result;
 
-import users.Student;
+import model.Student;
 
 /**
  * Servlet implementation class QueryClassListServlet

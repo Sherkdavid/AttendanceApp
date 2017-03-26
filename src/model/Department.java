@@ -1,4 +1,4 @@
-package modules;
+package model;
 
 public class Department{
 	String id, name, dept_head;

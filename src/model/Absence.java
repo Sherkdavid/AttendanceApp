@@ -1,19 +1,19 @@
-package modules;
+package model;
 
 import java.time.LocalDate;
 
 public class Absence
 {
 	LocalDate date;
-	String student_id, instance_id;
+	String student_id, class_id;
 	boolean valid;
 	
-	public Absence(String student, String instance_id)
+	public Absence(String student, String class_id,LocalDate date)
 	{
 		setValid(false);
 		setStudent(student_id);
-		setInstance(instance_id);
-		date = LocalDate.now();
+		setClassId(class_id);
+		this.date = date;
 	}
 	
 	public void setValid(boolean status)
@@ -36,14 +36,14 @@ public class Absence
 		return student_id;
 	}
 	
-	private void setInstance(String instance_id)
+	private void setClassId(String class_id)
 	{
-		this.instance_id = instance_id;
+		this.class_id = class_id;
 	}
 	
-	public String getinstanceId()
+	public String getClassId()
 	{
-		return instance_id;
+		return class_id;
 	}
 	
 }

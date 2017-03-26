@@ -7,9 +7,9 @@ import javax.servlet.ServletException;
 
 import com.mysql.fabric.Response;
 
+import model.Student;
 import servlets.*;
 import tools.GetServletObject;
-import users.Student;
 public class DatabaseTest {
 
 	public static void main(String[] args) {

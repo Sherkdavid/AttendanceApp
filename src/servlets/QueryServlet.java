@@ -12,9 +12,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.Student;
 import test.DatabaseTest;
 import tools.GetServletObject;
-import users.Student;
 
 /**
  * Servlet implementation class QueryServlet
@@ -36,7 +36,7 @@ public class QueryServlet extends HttpServlet {
     {
     	final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
     	final String DB_URL = "jdbc:mysql://localhost/db";
-    	final String user = "jdbc_user";
+    	final String user = "root";
     	final String password = "letmein";
     	
     	try {

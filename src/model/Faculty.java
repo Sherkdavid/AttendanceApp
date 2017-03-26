@@ -1,4 +1,4 @@
-package users;
+package model;
 
 public class Faculty extends User{	String department;
 	

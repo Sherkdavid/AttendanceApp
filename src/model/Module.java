@@ -1,4 +1,4 @@
-package modules;
+package model;
 public class Module
 {
 	String id, name, lecturer_id, dept_id;

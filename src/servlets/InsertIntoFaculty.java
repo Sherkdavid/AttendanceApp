@@ -41,15 +41,16 @@ public class InsertIntoFaculty extends QueryServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		boolean result;
+		String result;
 		connect();
 		String sql = "INSERT INTO faculty(faculty_id,name,email,department)"
 				+ "VALUES ('"+request.getParameter("faculty_id")+"','"+request.getParameter("name")+"','"+
 				request.getParameter("email")+"','"+request.getParameter("department")+"')";
 		try {
-			result = query.execute(sql);
+			query.execute(sql);
+			result = "Entry successful";
 		} catch (SQLException e) {
-			result = false;
+			result = "Error parsing entry to database";
 			e.printStackTrace();
 		}
 		sendResult(request,response,result);
