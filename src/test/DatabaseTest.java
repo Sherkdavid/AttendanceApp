@@ -17,13 +17,10 @@ public class DatabaseTest {
 		try {
 	
 			//Insert example 
-			GetServletObject req = new GetServletObject("http://localhost:8080/GroupProject/");
+			GetServletObject req = new GetServletObject("http://138.68.147.88:8080/GroupProject/");
 			HashMap<String, String> map = new HashMap<String, String>();
-			map.put("faculty_id", "R0012020");
-			map.put("name", "David Murphy");
-			map.put("email", "dmurphy10@mycit.ie");
-			map.put("department", "Computing");
-			req.sendPostRequest("InsertIntoFaculty",map);
+			
+			System.out.println(req.sendPostRequest("TestServlet",map));
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

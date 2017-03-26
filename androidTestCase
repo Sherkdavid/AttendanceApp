@@ -1,0 +1,11 @@
+//Maybe fire all this with a button
+{
+//Instantiate with host name
+GetServletObject post = new GetServletObject("http://138.68.147.88/GroupProject/")
+//create map
+Map map = new Map();
+map.put("param1","arbitrary_value")
+boolean result = post.sendPostRequest("TestServlet",map);
+//Append boolean to text string
+label.setText(result);
+}
