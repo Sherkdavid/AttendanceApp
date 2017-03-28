@@ -10,7 +10,6 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- -----------------------------------------------------
 -- Schema db
 -- -----------------------------------------------------
-DROP SCHEMA IF EXISTS `db` ;
 
 -- -----------------------------------------------------
 -- Schema db
@@ -100,7 +99,6 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `db`.`class` (
   `class_id` VARCHAR(255) NULL DEFAULT NULL,
-  `title` VARCHAR(255) NOT NULL,
   `module_id` VARCHAR(255) NOT NULL,
   `lecturer_id` VARCHAR(255) NULL DEFAULT NULL,
   INDEX `module_id` (`module_id` ASC),
