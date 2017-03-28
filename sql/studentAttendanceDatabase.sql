@@ -10,6 +10,7 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- -----------------------------------------------------
 -- Schema db
 -- -----------------------------------------------------
+DROP SCHEMA IF EXISTS `db` ;
 
 -- -----------------------------------------------------
 -- Schema db
