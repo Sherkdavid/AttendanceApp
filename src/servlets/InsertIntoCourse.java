@@ -35,7 +35,11 @@ public class InsertIntoCourse extends QueryServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String result;
-		connect();
+		try {
+			connect();
+		} catch (Exception e1) {
+			sendResult(request,response,e1.toString());
+		}
 		String sql = "INSERT INTO course(course_id,name,department)"
 				+ "VALUES ('"+request.getParameter("course_id")+"','"+request.getParameter("name")+"','"
 				+request.getParameter("department")+"')";

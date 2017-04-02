@@ -36,7 +36,11 @@ public class InsertIntoModule extends QueryServlet implements Servlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String result;
-		connect();
+		try {
+			connect();
+		} catch (Exception e1) {
+			sendResult(request,response,e1.toString());
+		}
 		String sql = "INSERT INTO module(module_id,title,course_id,faculty_id)"
 				+ "VALUES ('"+request.getParameter("module_id")+"','"+request.getParameter("title")+"','"+
 				request.getParameter("course_id")+"','"+request.getParameter("faculty_id")+"')";

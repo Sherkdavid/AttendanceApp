@@ -37,7 +37,11 @@ public class InsertIntoAbsence extends QueryServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String result;
-		connect();
+		try {
+			connect();
+		} catch (Exception e1) {
+			sendResult(request,response,e1.toString());
+		}
 		String sql = "INSERT INTO absence(student_id,class_id,date)"
 				+ "VALUES ('"+request.getParameter("student_id")+"','"+request.getParameter("class_id")+"','"+
 				Timestamp.valueOf(request.getParameter("date"))+"')";

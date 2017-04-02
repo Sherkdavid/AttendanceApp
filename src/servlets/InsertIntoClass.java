@@ -36,9 +36,13 @@ public class InsertIntoClass extends QueryServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String result;
-		connect();
-		String sql = "INSERT INTO class(class_id,title,module_id,lecturer_id)"
-				+ "VALUES ('"+request.getParameter("class_id")+"','"+request.getParameter("title")+"','"+
+		try {
+			connect();
+		} catch (Exception e1) {
+			sendResult(request,response,e1.toString());
+		}
+		String sql = "INSERT INTO class(class_id,module_id,lecturer_id)"
+				+ "VALUES ('"+request.getParameter("class_id")+"','"+
 				request.getParameter("module_id")+"','"+request.getParameter("lecturer_id")+"')";
 		try {
 			query.execute(sql);

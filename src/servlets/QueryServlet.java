@@ -32,33 +32,18 @@ public class QueryServlet extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
     
-    public void connect() throws ServletException
+    public void connect() throws Exception
     {
     	final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
     	final String DB_URL = "jdbc:mysql://localhost/db";
     	final String user = "root";
     	final String password = "letmein";
-    	
-    	try {
+    
 			Class.forName(JDBC_DRIVER).newInstance();
 			conn = DriverManager.getConnection(DB_URL, user, password);
 			query = conn.createStatement();
 			System.err.println("Connection Established");
-    	} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InstantiationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
     }
-    
     public void disconnect()
     {
     	try {

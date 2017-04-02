@@ -39,17 +39,20 @@ public class QueryFacultyByModule extends QueryServlet implements Servlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		connect();
-		String sql = "SELECT module.faculty_id, faculty.id, faculty.name, faculty.email, faculty.department"
-				+ "FROM module"
-				+ "LEFT JOIN faculty ON module.id =" + request.getParameter("module_id")
-				+ "AND module.faculty_id=faculty.id";
+		try {
+			connect();
+		} catch (Exception e1) {
+			sendResult(request,response,e1.toString());
+		}
+		String sql = "SELECT *"
+				+ "FROM faculty,module WHERE module.module_id = '" + request.getParameter("module_id") +
+				"' AND module.faculty_id = faculty.faculty_id";
 		try {
 			ResultSet result = query.executeQuery(sql);
 			ArrayList<Faculty> list = new ArrayList<Faculty>();
 			while(result.next())
 			{
-				list.add(new Faculty(result.getString("id"),result.getString("name"),result.getString("email"),result.getString("department")));
+				list.add(new Faculty(result.getString("faculty_id"),result.getString("name"),result.getString("email"),result.getString("department")));
 			}
 			sendResult(request,response,list);
 		} catch (SQLException e) {

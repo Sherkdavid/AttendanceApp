@@ -36,10 +36,14 @@ public class InsertIntoEnrolment extends QueryServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String result;
-		connect();
-		String sql = "INSERT INTO enrolment(student_id,class_id,date)"
+		try {
+			connect();
+		} catch (Exception e1) {
+			sendResult(request,response,e1.toString());
+		}
+		String sql = "INSERT INTO enrolment(student_id,class_id,enrol_date)"
 				+ "VALUES ('"+request.getParameter("student_id")+"','"+request.getParameter("class_id")+"','"+
-				Timestamp.valueOf(request.getParameter("date"))+"')";
+				Timestamp.valueOf(request.getParameter("enrol_date"))+"')";
 		try {
 			query.execute(sql);
 			result = "Entry successful";

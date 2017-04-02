@@ -34,18 +34,20 @@ public class QueryStudentsByClassID extends QueryServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) {
-	
-	}
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) {}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		connect();
+		try {
+			connect();
+		} catch (Exception e1) {
+			sendResult(request,response,e1.toString());
+		}
 		//Build sql query
-		String sql = "Select student.student_id, student.name,student.course_id,student.year,student.email,enrolment.class_id FROM enrolment " 
-					+ "LEFT JOIN student ON enrolment.class_id ='"+request.getParameter("class_id")+"'" + "AND enrolment.student_id=student.student_id";
+		String sql = "Select student.student_id, student.name,student.course_id,student.year,student.email,enrolment.class_id FROM student " 
+					+ "LEFT JOIN enrolment ON enrolment.class_id ='"+request.getParameter("class_id")+"' AND enrolment.student_id=student.student_id";
 		try {
 			//Execute query
 			ResultSet result = query.executeQuery(sql);
@@ -53,7 +55,7 @@ public class QueryStudentsByClassID extends QueryServlet {
 			//parse result set
 			while(result.next())
 			{
-				list.add(new Student(result.getString("student_id"), result.getString("name"), result.getString("course_id"),result.getString("email"),result.getInt("acc_year")));
+				list.add(new Student(result.getString("student_id"), result.getString("name"), result.getString("course_id"),result.getString("email"),result.getInt("year")));
 			}
 			//close result set
 			result.close();
