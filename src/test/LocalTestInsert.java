@@ -4,14 +4,14 @@ import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.HashMap;
 
-import tools.GetServletObject;
+import tools.ServletInterfaceController;
 
 public class LocalTestInsert {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		GetServletObject req = new GetServletObject("http://138.68.147.88:8080/GroupProject/");
+		ServletInterfaceController req = new ServletInterfaceController("http://138.68.147.88:8080/GroupProject/");
 		HashMap<String, String> department = new HashMap<String, String>();
 		department.put("name", "Computing");
 		department.put("h_o_d", "F001");

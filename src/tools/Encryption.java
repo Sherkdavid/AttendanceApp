@@ -3,6 +3,8 @@ package tools;
 import javax.crypto.*;
 import javax.crypto.spec.SecretKeySpec;
 import java.security.*;
+import java.security.spec.InvalidKeySpecException;
+import java.security.spec.X509EncodedKeySpec;
 
 /**
  * Created by David on 12/11/2016.
@@ -31,6 +33,19 @@ public class Encryption {
     public void setPublicKey(Key key_pub) {
         this.key_pub = key_pub;
     }
+    public void setPublicKey(byte[] key_pub)
+    {
+    	try {
+			KeyFactory kf = KeyFactory.getInstance("RSA");
+			this.key_pub = kf.generatePublic(new X509EncodedKeySpec(key_pub));
+    	} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvalidKeySpecException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
 
     public Encryption()
     {
@@ -50,6 +65,11 @@ public class Encryption {
 		}
         session_key = new SecretKeySpec(bytes,dataAlgo);
         return session_key;
+    }
+    
+    public void setSessionKey(Key key)
+    {
+    	session_key = key;
     }
 
     /**

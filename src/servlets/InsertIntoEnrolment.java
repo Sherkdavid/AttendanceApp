@@ -49,7 +49,7 @@ public class InsertIntoEnrolment extends QueryServlet {
 			result = "Entry successful";
 		} catch (SQLException e) {
 			result = "Error parsing entry to database\nDebug : " + e.getSQLState().toString();
-			e.printStackTrace();
+			log(e);
 		}
 		sendResult(request,response,result);
 		disconnect();

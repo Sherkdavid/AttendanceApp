@@ -39,11 +39,8 @@ public class QueryFacultyByModule extends QueryServlet implements Servlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		try {
-			connect();
-		} catch (Exception e1) {
-			sendResult(request,response,e1.toString());
-		}
+		connect();
+		
 		String sql = "SELECT *"
 				+ "FROM faculty,module WHERE module.module_id = '" + request.getParameter("module_id") +
 				"' AND module.faculty_id = faculty.faculty_id";
@@ -57,7 +54,7 @@ public class QueryFacultyByModule extends QueryServlet implements Servlet {
 			sendResult(request,response,list);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			log(e);
 		}
 		// TODO Auto-generated method stub
 		disconnect();

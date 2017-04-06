@@ -1,8 +1,13 @@
 package servlets;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.sql.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -14,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.Student;
 import test.DatabaseTest;
-import tools.GetServletObject;
+import tools.ServletInterfaceController;
 
 /**
  * Servlet implementation class QueryServlet
@@ -24,40 +29,49 @@ public class QueryServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	Connection conn;
 	Statement query;
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public QueryServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-    
-    public void connect() throws Exception
-    {
-    	final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    	final String DB_URL = "jdbc:mysql://localhost/db";
-    	final String user = "root";
-    	final String password = "letmein";
-    
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public QueryServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public void connect()
+	{
+		final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+		final String DB_URL = "jdbc:mysql://localhost/db";
+		final String user = "root";
+		final String password = "letmein";
+
+		try {
 			Class.forName(JDBC_DRIVER).newInstance();
 			conn = DriverManager.getConnection(DB_URL, user, password);
 			query = conn.createStatement();
 			System.err.println("Connection Established");
-    }
-    public void disconnect()
-    {
-    	try {
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			log(e);
+		}
+	}
+	public void disconnect()
+	{
+		try {
 			query.close();
 			conn.close();
 			System.err.println("Connection closed");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			log(e);
 		}
-    }
-    
-    public void testQuery(String req)
-    {
+	}
+
+	public void log(Exception e)
+	{
+		e.printStackTrace();
+	}
+	public void testQuery(String req)
+	{
 		try {
 			ResultSet set = query.executeQuery(req);
 			while(set.next())
@@ -66,12 +80,12 @@ public class QueryServlet extends HttpServlet {
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			log(e);
 		}
-    }
-    
-    protected void sendResult(HttpServletRequest req, HttpServletResponse res, Object result)
-    {
+	}
+
+	protected void sendResult(HttpServletRequest req, HttpServletResponse res, Object result)
+	{
 		ObjectOutputStream obj_out;
 		try {
 			obj_out = new ObjectOutputStream(res.getOutputStream());
@@ -79,16 +93,16 @@ public class QueryServlet extends HttpServlet {
 			obj_out.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			log(e);
 		}
-    }
-    
+	}
+
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 * Sample usage of GetServletObject class
+	 * Sample usage of ServletInterfaceController class
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) {
-		
+
 	}
 
 	/**
@@ -102,7 +116,7 @@ public class QueryServlet extends HttpServlet {
 			ResultSet result = query.executeQuery(sql);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			log(e);
 		}
 		//parse results and send to clients via output stream
 	}

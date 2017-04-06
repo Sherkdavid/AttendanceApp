@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.security.Key;
 import java.util.HashMap;
 
+import com.sun.org.apache.xml.internal.security.utils.Base64;
+
 import tools.*;
 
 public class EncryptionTest {
@@ -27,7 +29,7 @@ public class EncryptionTest {
 		//Sender encrypts data
 		byte[] data;
 		data = sender.encrypt(ObjectSerializer.serialize(s));
-		System.err.println("Encrypted value : " + data);
+		System.err.println("Encrypted value : " + Base64.encode(data));
 		
 		//Receiver decrypts session key using private key
 		Key key = receiver.decryptKey(key_bytes);

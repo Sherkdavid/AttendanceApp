@@ -39,11 +39,7 @@ public class QueryFacultyByClass extends QueryServlet implements Servlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		try {
-			connect();
-		} catch (Exception e1) {
-			sendResult(request,response,e1.toString());
-		}
+		connect();
 		String sql = "SELECT *"
 				+ "FROM faculty,class WHERE class.class_id = '" + request.getParameter("class_id") +
 				"' AND class.lecturer_id = faculty.faculty_id";
@@ -55,8 +51,7 @@ public class QueryFacultyByClass extends QueryServlet implements Servlet {
 				list.add(new Faculty(result.getString("faculty_id"), result.getString("name"), result.getString("email"), result.getString("department")));
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			log(e);
 		}
 		sendResult(request,response,list);
 		disconnect();

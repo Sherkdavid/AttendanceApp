@@ -36,11 +36,7 @@ public class InsertIntoModule extends QueryServlet implements Servlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String result;
-		try {
-			connect();
-		} catch (Exception e1) {
-			sendResult(request,response,e1.toString());
-		}
+		connect();
 		String sql = "INSERT INTO module(module_id,title,course_id,faculty_id)"
 				+ "VALUES ('"+request.getParameter("module_id")+"','"+request.getParameter("title")+"','"+
 				request.getParameter("course_id")+"','"+request.getParameter("faculty_id")+"')";
@@ -49,7 +45,7 @@ public class InsertIntoModule extends QueryServlet implements Servlet {
 			result = "Entry successful";
 		} catch (SQLException e) {
 			result = "Error parsing entry to database\nDebug : " + e.getSQLState().toString();
-			e.printStackTrace();
+			log(e);
 		}
 		sendResult(request,response,result);
 		disconnect();

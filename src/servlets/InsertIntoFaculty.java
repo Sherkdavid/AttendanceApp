@@ -33,7 +33,7 @@ public class InsertIntoFaculty extends QueryServlet {
 			response.getWriter().append("Served at: ").append(request.getContextPath());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			log(e);
 		}
 	}
 
@@ -55,7 +55,7 @@ public class InsertIntoFaculty extends QueryServlet {
 			result = "Entry successful";
 		} catch (SQLException e) {
 			result = "Error parsing entry to database\nDebug : " + e.getSQLState().toString();
-			e.printStackTrace();
+			log(e);
 		}
 		sendResult(request,response,result);
 		disconnect();

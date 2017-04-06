@@ -38,11 +38,8 @@ public class InsertIntoStudent extends QueryServlet implements Servlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stubString result;
 		String result;
-		try {
-			connect();
-		} catch (Exception e1) {
-			sendResult(request,response,e1.toString());
-		}
+		connect();
+
 		String sql = "INSERT INTO student(student_id,name,course_id,year,email)"
 				+ "VALUES ('"+request.getParameter("student_id")+"','"+request.getParameter("name")+"','"+
 				request.getParameter("course_id")+"','"+request.getParameter("year")+"','"+request.getParameter("email")+"')";
@@ -52,7 +49,7 @@ public class InsertIntoStudent extends QueryServlet implements Servlet {
 		} catch (SQLException e) {
 			result = "Error parsing entry to database\nDebug : " + e.getSQLState().toString();
 			sendResult(request,response,e.getSQLState());
-			e.printStackTrace();
+			log(e);
 		}
 		sendResult(request,response,result);
 		disconnect();
