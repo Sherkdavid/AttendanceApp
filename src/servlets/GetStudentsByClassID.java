@@ -19,14 +19,14 @@ import model.Student;
 /**
  * Servlet implementation class QueryClassListServlet
  */
-@WebServlet("/QueryStudentsByClassID")
-public class QueryStudentsByClassID extends QueryServlet {
+@WebServlet("/GetStudentsByClassID")
+public class GetStudentsByClassID extends QueryServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public QueryStudentsByClassID() {
+	public GetStudentsByClassID() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -40,11 +40,7 @@ public class QueryStudentsByClassID extends QueryServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		try {
-			connect();
-		} catch (Exception e1) {
-			sendResult(request,response,e1.toString());
-		}
+		connect();
 		//Build sql query
 		String sql = "Select student.student_id, student.name,student.course_id,student.year,student.email,enrolment.class_id FROM student " 
 					+ "LEFT JOIN enrolment ON enrolment.class_id ='"+request.getParameter("class_id")+"' AND enrolment.student_id=student.student_id";
@@ -67,6 +63,6 @@ public class QueryStudentsByClassID extends QueryServlet {
 		}
 
 		//close database connection
-		disconnect();
+		//disconnect();
 	}
 }

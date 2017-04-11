@@ -16,14 +16,14 @@ import model.Faculty;
 /**
  * Servlet implementation class QueryFacultyByModule
  */
-@WebServlet("/QueryFacultyByModule")
-public class QueryFacultyByModule extends QueryServlet implements Servlet {
+@WebServlet("/GetFacultyByModule")
+public class GetFacultyByModule extends QueryServlet implements Servlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see QueryServlet#QueryServlet()
      */
-    public QueryFacultyByModule() {
+    public GetFacultyByModule() {
         super();
         // TODO Auto-generated constructor stub
     }

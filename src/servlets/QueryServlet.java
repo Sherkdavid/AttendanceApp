@@ -42,7 +42,7 @@ public class QueryServlet extends HttpServlet {
 		final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
 		final String DB_URL = "jdbc:mysql://localhost/db";
 		final String user = "root";
-		final String password = "letmein";
+		final String password = "soh1cah2toa3";
 
 		try {
 			Class.forName(JDBC_DRIVER).newInstance();
@@ -57,7 +57,6 @@ public class QueryServlet extends HttpServlet {
 	public void disconnect()
 	{
 		try {
-			query.close();
 			conn.close();
 			System.err.println("Connection closed");
 		} catch (SQLException e) {

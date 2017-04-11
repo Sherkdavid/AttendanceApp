@@ -12,23 +12,19 @@ import tools.GetServletObject;
 import tools.ServletInterfaceController;
 public class DatabaseTest {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		ArrayList<Student> results;
 		//Insert example 
-		GetServletObject req = new GetServletObject("http://138.68.147.88:8080/GroupProject/");
+		ServletInterfaceController req = new ServletInterfaceController("http://localhost:8080/GroupProject/");
 		HashMap<String, String> map = new HashMap<String, String>();
-		map.put("class_id", "COM:001:01");
-		Object result = null;
-		try {
-			result = req.sendPostRequest("QueryFacultyByClass",map);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		ArrayList<Faculty> list = (ArrayList<Faculty>) result;
-		for(Faculty s:list)
+		map.put("faculty_id", "F002");
+		map.put("password", "DavidMurphy2436");
+		
+		Faculty user = (Faculty) req.sendPostRequest("LoginFaculty",map);
+		
+		if(user != null)
 		{
-			System.err.println(s.getName());
+			System.out.println(user.getName());
 		}
 
 
