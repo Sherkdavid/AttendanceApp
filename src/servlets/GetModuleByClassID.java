@@ -11,19 +11,20 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.Class;
+import model.Faculty;
+import model.Module;
 
 /**
- * Servlet implementation class GetClassByLecturer
+ * Servlet implementation class GetModuleByID
  */
-@WebServlet("/GetClassByLecturer")
-public class GetClassByLecturer extends QueryServlet implements Servlet {
+@WebServlet("/GetModuleByClassID")
+public class GetModuleByClassID extends QueryServlet implements Servlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see QueryServlet#QueryServlet()
      */
-    public GetClassByLecturer() {
+    public GetModuleByClassID() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -40,30 +41,23 @@ public class GetClassByLecturer extends QueryServlet implements Servlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		connect();
-		//Build sql query
-		String sql = "SELECT * FROM class WHERE lecturer_id = '" + request.getParameter("faculty_id") + "'"; 
-				
-				try {
-			//Execute query
+		
+		String sql = "SELECT *"
+				+ "FROM class, module WHERE class.class_id = '" + request.getParameter("class_id") +
+				"' AND class.module_id = module.module_id";
+		try {
 			ResultSet result = query.executeQuery(sql);
-			ArrayList<model.Class> list = new ArrayList<model.Class>();
-			//parse result set
-			while(result.next())
-			{
-				list.add(new model.Class(result.getString("class_id"), result.getString("module_id"), result.getString("lecturer_id"),result.getInt("lecture_count")));
-			}
-			for(model.Class c: list)
-			{
-				System.out.println(c.getClassId());
-			}
-			//close result set
-			result.close();
-			//write result list to output stream
-			sendResult(request, response, list);
+			result.next();
+			Module mod;
+			mod = new Module(result.getString("module_id"), result.getString("title"), result.getString("course_id"), result.getString("faculty_id"));
+			sendResult(request,response,mod);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			log(e);
 		}
+		// TODO Auto-generated method stub
+		disconnect();
+
 	}
 
 }

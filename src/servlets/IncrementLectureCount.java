@@ -11,19 +11,19 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.Class;
+import model.Student;
 
 /**
- * Servlet implementation class GetClassByLecturer
+ * Servlet implementation class IncrementLectureCount
  */
-@WebServlet("/GetClassByLecturer")
-public class GetClassByLecturer extends QueryServlet implements Servlet {
+@WebServlet("/IncrementLectureCount")
+public class IncrementLectureCount extends QueryServlet implements Servlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see QueryServlet#QueryServlet()
      */
-    public GetClassByLecturer() {
+    public IncrementLectureCount() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -41,29 +41,21 @@ public class GetClassByLecturer extends QueryServlet implements Servlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		connect();
 		//Build sql query
-		String sql = "SELECT * FROM class WHERE lecturer_id = '" + request.getParameter("faculty_id") + "'"; 
-				
-				try {
+		String sql ="UPDATE class SET lecture_count = lecture_count +1 WHERE class_id ='" +request.getParameter("class_id")+"'"; 	
+			try {
 			//Execute query
-			ResultSet result = query.executeQuery(sql);
-			ArrayList<model.Class> list = new ArrayList<model.Class>();
+			query.execute(sql);
 			//parse result set
-			while(result.next())
-			{
-				list.add(new model.Class(result.getString("class_id"), result.getString("module_id"), result.getString("lecturer_id"),result.getInt("lecture_count")));
-			}
-			for(model.Class c: list)
-			{
-				System.out.println(c.getClassId());
-			}
-			//close result set
-			result.close();
 			//write result list to output stream
-			sendResult(request, response, list);
+			sendResult(request, response, true);
 		} catch (SQLException e) {
+			sendResult(request,response,false);
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
+		//close database connection
+		disconnect();
 	}
 
 }

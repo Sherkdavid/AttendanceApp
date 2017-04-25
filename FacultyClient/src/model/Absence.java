@@ -12,7 +12,7 @@ public class Absence implements Serializable
 	public Absence(String student, String class_id,Timestamp date)
 	{
 		setValid(false);
-		setStudent(student_id);
+		setStudent(student);
 		setClassId(class_id);
 		this.date = date;
 	}

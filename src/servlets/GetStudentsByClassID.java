@@ -63,6 +63,6 @@ public class GetStudentsByClassID extends QueryServlet {
 		}
 
 		//close database connection
-		//disconnect();
+		disconnect();
 	}
 }

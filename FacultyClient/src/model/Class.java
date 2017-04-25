@@ -4,19 +4,17 @@ import java.io.Serializable;
 
 public class Class implements Serializable{
 	String class_id, lecturer_id, module_id;
+	int lectureCount;
 	
 	public Class()
 	{
 	}
-	public Class(String class_id, String module_id, String lecturer_id)
+	public Class(String class_id, String module_id, String lecturer_id, int count)
 	{
 		this.class_id = class_id;
 		this.module_id = module_id;
 		this.lecturer_id = lecturer_id;
-	}
-	public void setLecturerId(String id)
-	{
-		lecturer_id = id;
+		lectureCount = count;
 	}
 	public String getLecturerId()
 	{
@@ -30,6 +28,10 @@ public class Class implements Serializable{
 	public String getModuleId()
 	{
 		return module_id;
+	}
+	public int getLectureCount()
+	{
+		return lectureCount;
 	}
 
 }

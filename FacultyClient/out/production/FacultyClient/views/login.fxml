@@ -20,7 +20,7 @@
       <RowConstraints />
    </rowConstraints>
    <children>
-      <VBox alignment="TOP_CENTER" prefHeight="313.0" prefWidth="300.0" spacing="10.0">
+      <VBox fx:id="container" alignment="TOP_CENTER" prefHeight="313.0" prefWidth="300.0" spacing="10.0">
          <children>
             <Label text="Log In">
                <font>
@@ -46,7 +46,7 @@
                <children>
                   <Label text="Password" />
                   <PasswordField fx:id="password" />
-                  <Button mnemonicParsing="false" onAction="#login" text="Go" />
+                  <Button fx:id="goButton" mnemonicParsing="false" onAction="#login" text="Go" />
                </children>
                <opaqueInsets>
                   <Insets />

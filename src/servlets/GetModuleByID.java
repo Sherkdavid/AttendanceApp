@@ -3,7 +3,6 @@ package servlets;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -12,20 +11,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.Absence;
-import model.Faculty;
+import model.Module;
 
 /**
- * Servlet implementation class GetAbsenceForStudent
+ * Servlet implementation class GetModuleByID
  */
-@WebServlet("/GetAbsenceForStudentByClass")
-public class GetAbsenceForStudentByClass extends QueryServlet {
-	private static final long serialVersionUID = 1L;
+@WebServlet("/GetModuleByID")
+public class GetModuleByID extends QueryServlet {
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public GetAbsenceForStudentByClass() {
+    public GetModuleByID() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -41,24 +38,23 @@ public class GetAbsenceForStudentByClass extends QueryServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		connect();
+		// TODO Auto-generated method stub
+connect();
+		
 		String sql = "SELECT *"
-				+ "FROM absence WHERE class_id = '" + request.getParameter("class_id")+"'";
-		ArrayList<Absence> list = new ArrayList<Absence>();
+				+ "FROM module WHERE module.faculty_id = '" + request.getParameter("faculty_id")+"'";
 		try {
 			ResultSet result = query.executeQuery(sql);
-			while(result.next())
-			{
-				list.add(new Absence(result.getString("student_id"), result.getString("class_id"), Timestamp.valueOf(result.getString("date"))));
-			}
+			Module mod = new Module(result.getString("module_id"), result.getString("title"), result.getString("course_id"), result.getString("faculty_id"));				
+			sendResult(request,response,mod);
 		} catch (SQLException e) {
-			e.printStackTrace();
-		}catch (Exception e)
-		{
+			// TODO Auto-generated catch block
 			log(e);
 		}
-		sendResult(request,response,list);
+		// TODO Auto-generated method stub
 		disconnect();
+	
+
 	}
 
 }

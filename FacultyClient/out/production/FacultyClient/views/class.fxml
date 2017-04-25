@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ClassController">
+   <top>
+      <Label fx:id="title" text="Label" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="Arial Black" size="24.0" />
+         </font></Label>
+   </top>
+   <center>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="255.0" spacing="20.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" onAction="#takeAttendance" prefHeight="70.0" prefWidth="173.0" text="Take Attendance">
+               <font>
+                  <Font name="Arial Black" size="15.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="173.0" text="View Attendance">
+               <font>
+                  <Font name="Arial Black" size="15.0" />
+               </font></Button>
+         </children>
+      </VBox>
+   </center>
+   <right>
+      <VBox prefHeight="308.0" prefWidth="141.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="id" text="Label">
+               <font>
+                  <Font name="Arial Black" size="20.0" />
+               </font></Label>
+         </children>
+      </VBox>
+   </right>
+   <left>
+      <HBox prefHeight="308.0" prefWidth="377.0" BorderPane.alignment="CENTER">
+         <children>
+            <TableView fx:id="students" prefHeight="308.0" prefWidth="200.0">
+              <columns>
+                <TableColumn fx:id="nameCol" editable="false" prefWidth="114.0" text="Name" />
+                <TableColumn fx:id="idCol" editable="false" prefWidth="85.0" text="Student ID" />
+              </columns>
+            </TableView>
+            <VBox fx:id="vboxAttendance" prefHeight="288.0" prefWidth="154.0">
+               <HBox.margin>
+                  <Insets left="20.0" top="20.0" />
+               </HBox.margin></VBox>
+         </children>
+      </HBox>
+   </left>
+</BorderPane>
