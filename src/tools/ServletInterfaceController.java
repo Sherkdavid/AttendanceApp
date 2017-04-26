@@ -59,7 +59,7 @@ public class ServletInterfaceController {
 		}
 		return servletConnection;
 	}
-	
+	@Deprecated
 	private void requestSessionKey()
 	{
 		HashMap<String, String> map = new HashMap<String, String>();

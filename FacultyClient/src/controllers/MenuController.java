@@ -25,11 +25,15 @@ import java.util.ResourceBundle;
 public class MenuController {
     private User currentUser;
     private ClassController con;
-
+    private ServletInterfaceController servletInterface;
     @FXML
     Menu classes,modules,department;
     @FXML
     VBox layout;
+
+    public void setServletInterface(ServletInterfaceController servletInterface) {
+        this.servletInterface = servletInterface;
+    }
 
     public void setCurrentUser(User currentUser) {
         this.currentUser = currentUser;
@@ -51,13 +55,12 @@ public class MenuController {
 
     public void preload()
     {
-        ServletInterfaceController server = new ServletInterfaceController("http://localhost:8080/GroupProject/");
         HashMap<String,String> params = new HashMap<>();
         params.put("faculty_id", currentUser.getId());
         try {
-            ArrayList<model.Class> classList = (ArrayList<model.Class>) server.sendPostRequest("GetClassByLecturer", params);
+            ArrayList<model.Class> classList = (ArrayList<model.Class>) servletInterface.sendPostRequest("GetClassByLecturer", params);
             loadClasses(classList);
-            ArrayList<Module> moduleList = (ArrayList<Module>) server.sendPostRequest("GetModuleByFacultyID", params);
+            ArrayList<Module> moduleList = (ArrayList<Module>) servletInterface.sendPostRequest("GetModuleByFacultyID", params);
             loadModules(moduleList);
         } catch (Exception e) {
             e.printStackTrace();
@@ -73,6 +76,7 @@ public class MenuController {
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/module.fxml"));
                         Parent layout = loader.load();
                         ModuleController modCon = loader.getController();
+                        modCon.setServletInterface(servletInterface);
                         modCon.setModule(mod);
                         modCon.preload();
                         root.setCenter(layout);
@@ -100,6 +104,7 @@ public class MenuController {
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/class.fxml"));
                         Parent layout = loader.load();
                         con = loader.getController();
+                        con.setServletInterface(servletInterface);
                         con.loadView(c.getClassId());
                         root.setCenter(layout);
                     } catch (IOException ioe) {

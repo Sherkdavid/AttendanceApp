@@ -36,7 +36,7 @@ public class LoginController implements Initializable {
 
     public void login()
     {
-        ServletInterfaceController serv = new ServletInterfaceController("http://localhost:8080/GroupProject/");
+        ServletInterfaceController serv = new ServletInterfaceController("http://138.68.147.88:8080/GroupProject/");
         HashMap<String,String> params = new HashMap<>();
         params.put("faculty_id",id.getText());
         params.put("password",password.getText());
@@ -55,6 +55,7 @@ public class LoginController implements Initializable {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/banner.fxml"));
                 Parent menu = loader.load();
                 MenuController con = loader.getController();
+                con.setServletInterface(serv);
                 con.setCurrentUser(logged);
                 con.preload();
                 root.setTop(menu);

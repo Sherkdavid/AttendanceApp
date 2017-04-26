@@ -12,7 +12,12 @@ public class ModuleController {
     @FXML
     private Label id,title;
     Module module;
-    ServletInterfaceController server;
+    ServletInterfaceController servletInterface;
+
+    public void setServletInterface(ServletInterfaceController servletInterface) {
+        this.servletInterface = servletInterface;
+    }
+
     public void setModule(Module module)
     {
         this.module = module;

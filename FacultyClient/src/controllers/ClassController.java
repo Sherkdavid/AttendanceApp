@@ -28,6 +28,7 @@ public class ClassController {
     Module mod = null;
     model.Class myClass = null;
     Stage window;
+    ServletInterfaceController servletInterface;
     @FXML
     VBox vboxAttendance;
     @FXML
@@ -40,6 +41,10 @@ public class ClassController {
     //TODO Create tableview with class list and a listener to open an attendance view for the student
     private boolean windowOpen;
 
+    public void setServletInterface(ServletInterfaceController servletInterface) {
+        this.servletInterface = servletInterface;
+    }
+
     public void takeAttendance()
     {
         if(!windowOpen) {
@@ -48,6 +53,7 @@ public class ClassController {
                 Parent layout = null;
                 layout = loader.load();
                 RolecallController con = loader.getController();
+                con.setServletInterface(servletInterface);
                 con.setParent(this);
                 con.loadClass(list, myClass);
                 window = new Stage();
@@ -83,16 +89,15 @@ public class ClassController {
     }
 
     public void loadView(String classId) {
-        ServletInterfaceController server = new ServletInterfaceController("http://localhost:8080/GroupProject/");
         windowOpen = false;
         id.setText(classId);
         HashMap<String, String> params = new HashMap();
         params.put("class_id", classId);
         try {
-            list = (ArrayList<Student>) server.sendPostRequest("GetStudentsByClassID", params);
-            absences = (ArrayList<Absence>) server.sendPostRequest("GetAbsenceForStudentByClass", params);
-            mod = (Module) server.sendPostRequest("GetModuleByClassID", params);
-            myClass = (model.Class) server.sendPostRequest("GetClassByID", params);
+            list = (ArrayList<Student>) servletInterface.sendPostRequest("GetStudentsByClassID", params);
+            absences = (ArrayList<Absence>) servletInterface.sendPostRequest("GetAbsenceForStudentByClass", params);
+            mod = (Module) servletInterface.sendPostRequest("GetModuleByClassID", params);
+            myClass = (model.Class) servletInterface.sendPostRequest("GetClassByID", params);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -121,13 +126,12 @@ public class ClassController {
 
     public void refresh(String classId)
     {
-        ServletInterfaceController server = new ServletInterfaceController("http://localhost:8080/GroupProject/");
         HashMap<String, String> params = new HashMap();
         params.put("class_id", classId);
         try
         {
-            absences = (ArrayList<Absence>) server.sendPostRequest("GetAbsenceForStudentByClass", params);
-            myClass = (model.Class) server.sendPostRequest("GetClassByID", params);
+            absences = (ArrayList<Absence>) servletInterface.sendPostRequest("GetAbsenceForStudentByClass", params);
+            myClass = (model.Class) servletInterface.sendPostRequest("GetClassByID", params);
         }
         catch (Exception e) {
             e.printStackTrace();

@@ -52,7 +52,13 @@ public class LocalTestInsert {
 		student.put("year","1");
 		student.put("email", "jb10@mycit.ie");
 		try {
-			String s = (String) req.sendPostRequest("InsertIntoClass", classInstance);
+	//		req.sendPostRequest("InsertIntoDepartment", department);
+			//req.sendPostRequest("InsertIntoCourse", course);
+			//req.sendPostRequest("InsertIntoFaculty", faculty);
+		//	req.sendPostRequest("InsertIntoModule",module);
+			//req.sendPostRequest("InsertIntoClass", classInstance);
+			//req.sendPostRequest("InsertIntoStudent", student);
+			//req.sendPostRequest("InsertIntoEnrolment", enrolment);
 		} 
 		catch (Exception e) {
 			// TODO Auto-generated catch block

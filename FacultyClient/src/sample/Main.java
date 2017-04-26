@@ -19,7 +19,9 @@ public class Main extends Application {
         primaryStage.setWidth(900);
         primaryStage.setResizable(false);
         root.setCenter(login);
-        primaryStage.setScene(new Scene(root));
+        Scene s = new Scene(root);
+        s.getStylesheets().add("views/stylesheet.css");
+        primaryStage.setScene(s);
         primaryStage.show();
     }
 

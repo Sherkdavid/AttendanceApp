@@ -33,6 +33,11 @@ public class RolecallController {
     VBox container;
     @FXML
     ScrollPane scroller;
+    ServletInterfaceController servletInterface;
+
+    public void setServletInterface(ServletInterfaceController servletInterface) {
+        this.servletInterface = servletInterface;
+    }
 
     public void setParent(ClassController parent) {
         this.parent = parent;
@@ -73,7 +78,6 @@ public class RolecallController {
         Optional<ButtonType> result = alert.showAndWait();
 
         if (result.get() == ButtonType.OK){
-            ServletInterfaceController server = new ServletInterfaceController("http://localhost:8080/GroupProject/");
             new Thread(new Runnable() {
                 @Override
                 public void run() {
@@ -82,7 +86,7 @@ public class RolecallController {
                     map.put("class_id", sub.getClassId());
 
                     try {
-                        server.sendPostRequest("IncrementLectureCount",map);
+                        servletInterface.sendPostRequest("IncrementLectureCount",map);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -94,7 +98,7 @@ public class RolecallController {
                                     param.put("student_id", ((RolecallBox) n).getStudent().getId());
                                     param.put("class_id", sub.getClassId());
                                     param.put("date", Timestamp.valueOf(date.getValue().atStartOfDay()).toString());
-                                    server.sendPostRequest("InsertIntoAbsence", param);
+                                    servletInterface.sendPostRequest("InsertIntoAbsence", param);
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }

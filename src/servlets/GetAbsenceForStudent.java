@@ -48,7 +48,6 @@ public class GetAbsenceForStudent extends QueryServlet implements Servlet {
 			ResultSet result = query.executeQuery(sql);
 			while(result.next())
 			{
-				
 				list.add(new Absence(result.getString("student_id"), result.getString("class_id"), Timestamp.valueOf(result.getString("date"))));
 			}
 		} catch (SQLException e) {

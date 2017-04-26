@@ -42,11 +42,13 @@ public class GetModuleByID extends QueryServlet {
 connect();
 		
 		String sql = "SELECT *"
-				+ "FROM module WHERE module.faculty_id = '" + request.getParameter("faculty_id")+"'";
+				+ "FROM module WHERE module.module_id = '" + request.getParameter("module_id")+"'";
 		try {
 			ResultSet result = query.executeQuery(sql);
+			result.next();
 			Module mod = new Module(result.getString("module_id"), result.getString("title"), result.getString("course_id"), result.getString("faculty_id"));				
 			sendResult(request,response,mod);
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			log(e);

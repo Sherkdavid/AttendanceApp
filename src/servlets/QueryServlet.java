@@ -42,7 +42,7 @@ public class QueryServlet extends HttpServlet {
 		final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
 		final String DB_URL = "jdbc:mysql://localhost/db";
 		final String user = "root";
-		final String password = "soh1cah2toa3";
+		final String password = "letmein";
 
 		try {
 			Class.forName(JDBC_DRIVER).newInstance();

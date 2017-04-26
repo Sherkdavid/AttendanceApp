@@ -22,7 +22,7 @@
    <children>
       <VBox fx:id="container" alignment="TOP_CENTER" prefHeight="313.0" prefWidth="300.0" spacing="10.0">
          <children>
-            <Label text="Log In">
+            <Label text="Admin Console Log In">
                <font>
                   <Font name="Arial Black" size="22.0" />
                </font>
