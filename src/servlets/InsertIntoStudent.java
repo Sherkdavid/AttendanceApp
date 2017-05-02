@@ -40,9 +40,9 @@ public class InsertIntoStudent extends QueryServlet implements Servlet {
 		String result;
 		connect();
 
-		String sql = "INSERT INTO student(student_id,name,course_id,year,email)"
+		String sql = "INSERT INTO student(student_id,name,year,email)"
 				+ "VALUES ('"+request.getParameter("student_id")+"','"+request.getParameter("name")+"','"+
-				request.getParameter("course_id")+"','"+request.getParameter("year")+"','"+request.getParameter("email")+"')";
+				request.getParameter("year")+"','"+request.getParameter("email")+"')";
 		try {
 			query.execute(sql);
 			result = "Entry successful";

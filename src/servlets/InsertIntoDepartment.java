@@ -41,8 +41,8 @@ public class InsertIntoDepartment extends QueryServlet {
 		} catch (Exception e1) {
 			sendResult(request,response,e1.toString());
 		}
-		String sql = "INSERT INTO department(name,h_o_d)"
-				+ "VALUES ('"+request.getParameter("name")+"','"+request.getParameter("h_o_d")+"')";
+		String sql = "INSERT INTO department(name)"
+				+ "VALUES('"+request.getParameter("name")+"')";
 		try {
 			query.execute(sql);
 			result = "Entry successful";

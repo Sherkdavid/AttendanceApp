@@ -2,24 +2,25 @@ package servlets;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 
+import javax.servlet.Servlet;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class InsertIntoCourse
+ * Servlet implementation class UpdateDepartmentHead
  */
-@WebServlet("/InsertIntoCourse")
-public class InsertIntoCourse extends QueryServlet {
+@WebServlet("/UpdateDepartmentHead")
+public class UpdateDepartmentHead extends QueryServlet implements Servlet {
 	private static final long serialVersionUID = 1L;
        
     /**
-     * @see HttpServlet#HttpServlet()
+     * @see QueryServlet#QueryServlet()
      */
-    public InsertIntoCourse() {
+    public UpdateDepartmentHead() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,7 +28,8 @@ public class InsertIntoCourse extends QueryServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)  {
+		
 	}
 
 	/**
@@ -40,9 +42,7 @@ public class InsertIntoCourse extends QueryServlet {
 		} catch (Exception e1) {
 			sendResult(request,response,e1.toString());
 		}
-		String sql = "INSERT INTO course(course_id,name,department)"
-				+ "VALUES ('"+request.getParameter("course_id")+"','"+request.getParameter("name")+"','"
-				+request.getParameter("department")+"')";
+		String sql = "UPDATE department SET h_o_d = '" + request.getParameter("head") + "' WHERE name = '" + request.getParameter("department")+"'";
 		try {
 			query.execute(sql);
 			result = "Entry successful";

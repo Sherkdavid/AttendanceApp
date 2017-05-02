@@ -1,6 +1,7 @@
 package model;
 
-public class Faculty extends User{	String department;
+public class Faculty extends User{
+	String department;
 	
 	public Faculty(String id, String name, String mail, String department) {
 		super(id, name, mail);
@@ -16,6 +17,9 @@ public class Faculty extends User{	String department;
 		return department;
 	}
 
-
+	public String toString()
+	{
+		return getId() + " : " + getName();
+	}
 
 }

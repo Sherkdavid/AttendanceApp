@@ -19,6 +19,11 @@ public class Department implements Serializable{
 		return dept_head;
 	}
 	
+	public String getId()
+	{
+		return id;
+	}
+	
 	private void setName(String name)
 	{
 		this.name = name;

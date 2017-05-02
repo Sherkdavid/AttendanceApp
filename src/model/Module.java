@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class Module implements Serializable
 {
 	String id, name, lecturer_id, dept_id;
-	public Module(String id, String name, String lecturer_id, String dept_id)
+	public Module(String id, String name, String dept_id, String lecturer_id)
 	{
 		setId(id);
 		setName(name);
@@ -53,6 +53,9 @@ public class Module implements Serializable
 		return lecturer_id;
 	}
 	
-	
+	public String toString()
+	{
+		return getName();
+	}
 	
 }

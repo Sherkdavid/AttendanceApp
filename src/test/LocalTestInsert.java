@@ -14,7 +14,7 @@ public class LocalTestInsert {
 		ServletInterfaceController req = new ServletInterfaceController("http://138.68.147.88:8080/GroupProject/");
 		HashMap<String, String> department = new HashMap<String, String>();
 		department.put("name", "Computing");
-		department.put("h_o_d", "F001");
+		//department.put("h_o_d", "F001");
 
 		HashMap<String, String> faculty = new HashMap<String, String>();
 		faculty.put("faculty_id", "F001");
@@ -22,15 +22,11 @@ public class LocalTestInsert {
 		faculty.put("email", "jjo_hnson@gmail.io");
 		faculty.put("department", "Computing");
 
-		HashMap<String, String> course = new HashMap<String,String>();
-		course.put("course_id", "COM");
-		course.put("name", "Computing");
-		course.put("department", "Computing");
-
+		
 		HashMap<String, String> module = new HashMap<String, String>();
 		module.put("module_id","COM:001");
 		module.put("title", "Networking");
-		module.put("course_id", "COM");
+		module.put("department", "Computing");
 		module.put("faculty_id", "F001");
 
 		HashMap<String, String> classInstance = new HashMap<String, String>();
@@ -39,7 +35,7 @@ public class LocalTestInsert {
 		classInstance.put("lecturer_id", "F001");
 
 		HashMap<String,String> enrolment = new HashMap<String, String>();
-		enrolment.put("student_id","R003");
+		enrolment.put("student_id","R002");
 		enrolment.put("class_id", "COM:001:01");
 		Timestamp stamp = new Timestamp(System.currentTimeMillis());
 		System.out.println(stamp.toString());
@@ -48,17 +44,16 @@ public class LocalTestInsert {
 		HashMap<String,String> student = new HashMap<String, String>();
 		student.put("student_id", "R002");
 		student.put("name", "JohnnyBai");
-		student.put("course_id", "COM");
+		student.put("department", "Computing");
 		student.put("year","1");
 		student.put("email", "jb10@mycit.ie");
 		try {
-	//		req.sendPostRequest("InsertIntoDepartment", department);
-			//req.sendPostRequest("InsertIntoCourse", course);
-			//req.sendPostRequest("InsertIntoFaculty", faculty);
-		//	req.sendPostRequest("InsertIntoModule",module);
-			//req.sendPostRequest("InsertIntoClass", classInstance);
+			//req.sendPostRequest("InsertIntoDepartment", department);
+			//System.out.println(req.sendPostRequest("InsertIntoFaculty", faculty));
+			//req.sendPostRequest("InsertIntoModule",module);
+			req.sendPostRequest("InsertIntoClass", classInstance);
 			//req.sendPostRequest("InsertIntoStudent", student);
-			//req.sendPostRequest("InsertIntoEnrolment", enrolment);
+			req.sendPostRequest("InsertIntoEnrolment", enrolment);
 		} 
 		catch (Exception e) {
 			// TODO Auto-generated catch block

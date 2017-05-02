@@ -50,7 +50,7 @@ public class GetModuleByFacultyID extends QueryServlet implements Servlet {
 			ArrayList<Module> list = new ArrayList<Module>();
 			while(result.next())
 			{
-				list.add(new Module(result.getString("module_id"), result.getString("title"), result.getString("course_id"), result.getString("faculty_id")));				
+				list.add(new Module(result.getString("module_id"), result.getString("title"), result.getString("department"), result.getString("faculty_id")));				
 			}
 			sendResult(request,response,list);
 		} catch (SQLException e) {

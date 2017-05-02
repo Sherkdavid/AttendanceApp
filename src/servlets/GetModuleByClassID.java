@@ -49,7 +49,7 @@ public class GetModuleByClassID extends QueryServlet implements Servlet {
 			ResultSet result = query.executeQuery(sql);
 			result.next();
 			Module mod;
-			mod = new Module(result.getString("module_id"), result.getString("title"), result.getString("course_id"), result.getString("faculty_id"));
+			mod = new Module(result.getString("module_id"), result.getString("title"), result.getString("department"), result.getString("faculty_id"));
 			sendResult(request,response,mod);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
