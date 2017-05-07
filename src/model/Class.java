@@ -3,8 +3,8 @@ package model;
 import java.io.Serializable;
 
 public class Class implements Serializable{
-	String class_id, lecturer_id, module_id;
-	int lectureCount;
+	private String class_id, lecturer_id, module_id;
+	private int lectureCount;
 	
 	public Class()
 	{
@@ -32,6 +32,10 @@ public class Class implements Serializable{
 	public int getLectureCount()
 	{
 		return lectureCount;
+	}
+	public String toString()
+	{
+		return getClassId();
 	}
 
 }

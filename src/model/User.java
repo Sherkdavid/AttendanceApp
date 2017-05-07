@@ -39,5 +39,8 @@ public class User implements Serializable {
 	{
 		return id;
 	}
-
+	public String toString()
+	{
+		return getName();
+	}
 }

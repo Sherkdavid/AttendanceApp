@@ -17,9 +17,5 @@ public class Faculty extends User{
 		return department;
 	}
 
-	public String toString()
-	{
-		return getId() + " : " + getName();
-	}
 
 }

@@ -3,7 +3,7 @@ package model;
 import java.io.Serializable;
 
 public class Department implements Serializable{
-	String id, name, dept_head;
+	private String id, name, dept_head;
 	public Department(String name, String head)
 	{
 		setHead(head);
@@ -32,5 +32,10 @@ public class Department implements Serializable{
 	public String getName()
 	{
 		return name;
+	}
+
+	public String toString()
+	{
+		return getName();
 	}
 }
