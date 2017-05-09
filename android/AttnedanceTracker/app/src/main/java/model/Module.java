@@ -1,8 +1,11 @@
-package com.example.kieran.attnedancetracker.modules;
-public class Module
+package model;
+
+import java.io.Serializable;
+
+public class Module implements Serializable
 {
 	String id, name, lecturer_id, dept_id;
-	public Module(String id, String name, String lecturer_id, String dept_id)
+	public Module(String id, String name, String dept_id, String lecturer_id)
 	{
 		setId(id);
 		setName(name);
@@ -49,12 +52,10 @@ public class Module
 	{
 		return lecturer_id;
 	}
-
-	@Override
-	public String toString() {
+	
+	public String toString()
+	{
 		return getName();
 	}
-	
-	
 	
 }

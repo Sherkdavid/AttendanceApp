@@ -1,11 +1,12 @@
-package com.example.kieran.attnedancetracker.modules;
+package model;
 
-public class Department{
-	String id, name, dept_head;
-	public Department(String id, String name, String head)
+import java.io.Serializable;
+
+public class Department implements Serializable{
+	private String id, name, dept_head;
+	public Department(String name, String head)
 	{
 		setHead(head);
-		setId(id);
 		setName(name);
 	}
 	
@@ -16,11 +17,6 @@ public class Department{
 	public String getHead()
 	{
 		return dept_head;
-	}
-
-	private void setId(String id)
-	{
-		this.id = id;
 	}
 	
 	public String getId()
@@ -36,5 +32,10 @@ public class Department{
 	public String getName()
 	{
 		return name;
+	}
+
+	public String toString()
+	{
+		return getName();
 	}
 }

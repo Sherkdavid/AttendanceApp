@@ -11,17 +11,23 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".UiMenus.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".StudentHomescreen" />
-        <activity android:name=".LecturerHomescreen" />
-        <activity android:name=".ManageAttendanceScreen" />
-        <activity android:name=".TakeAttendanceScreen"></activity>
+        <activity android:name=".UiMenus.StudentHomescreen" />
+        <activity android:name=".UiMenus.LecturerHomescreen" />
+        <activity android:name=".UiMenus.ManageAttendanceScreen" />
+        <activity android:name=".UiMenus.TakeAttendanceScreen" />
+        <activity android:name=".UiMenus.ReviewAttendanceScreen" />
+        <activity android:name=".ViewTimetable" />
+        <activity android:name=".test.testForData2" />
+        <activity android:name=".UiMenus.listTesting" />
+        <activity android:name=".test.listTest" />
+        <activity android:name=".test.studentselectortest"></activity>
     </application>
 
 </manifest>

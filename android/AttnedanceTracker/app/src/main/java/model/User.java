@@ -1,12 +1,19 @@
-package com.example.kieran.attnedancetracker.users;
+package model;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
 	String id, name, email;
+
 	public User(String id, String name, String mail)
 	{
 		setId(id);
 		setName(name);
 		setEmail(mail);
+	}
+	public User()
+	{
+		
 	}
 	
 	private void setEmail(String mail) {
@@ -32,5 +39,8 @@ public class User {
 	{
 		return id;
 	}
-
+	public String toString()
+	{
+		return getName();
+	}
 }
