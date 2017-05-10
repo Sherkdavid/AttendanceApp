@@ -1,4 +1,4 @@
-package com.example.kieran.attnedancetracker.users;
+package model;
 
 public class Faculty extends User{
 	String department;
@@ -16,7 +16,6 @@ public class Faculty extends User{
 	{
 		return department;
 	}
-
 
 
 }

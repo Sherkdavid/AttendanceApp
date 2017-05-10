@@ -1,24 +1,16 @@
-package com.example.kieran.attnedancetracker.test;
+package com.example.kieran.attnedancetracker.tools;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLConnection;
 import java.net.URLEncoder;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
 
-//import com.mysql.fabric.xmlrpc.base.Param;
-
-//import users.Student;
-
-import com.example.kieran.attnedancetracker.users.Student;
 /**
  * Class for sending Param's to a servlet and returning an Object
  * @author David

@@ -1,15 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
     android:background="@drawable/app_background"
-    android:padding="10dp" >>
+    android:padding="10dp" >
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp">
+        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/classListLabel"
@@ -29,16 +27,15 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp">
+        android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/PresentLabel"
+            android:id="@+id/StudentNameLabel"
             android:layout_height="wrap_content"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:textStyle="bold"
-            android:text="Present"/>
+            android:text="Name"/>
         <TextView
             android:id="@+id/StudentIDLabel"
             android:layout_height="wrap_content"
@@ -46,16 +43,25 @@
             android:layout_weight="1"
             android:textStyle="bold"
             android:text="ID"/>
+        <TextView
+            android:id="@+id/AttendanceRateLabel"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="Attendance"/>
     </LinearLayout>
 
 
-    <ListView android:id="@+id/listView1" android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
 
-    <Button
-        android:id="@+id/findSelected"
+    <ListView
+        android:id="@+id/listView1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Save Attendance" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true" >
+    </ListView>
+
+
+
 
 </LinearLayout>
