@@ -56,6 +56,20 @@
         android:id="@+id/findSelected"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/button_background"
+        android:padding="5dp"
+        android:layout_margin="5dp"
         android:text="Save Attendance" />
+
+    <Button
+        android:id="@+id/cancelBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/button_background"
+        android:padding="5dp"
+        android:layout_margin="5dp"
+        android:text="Cancel" />
 
 </LinearLayout>

@@ -4,6 +4,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -17,7 +19,6 @@ import model.Absence;
 import model.Student;
 import com.example.kieran.attnedancetracker.R;
 import com.example.kieran.attnedancetracker.tools.ServletInterfaceController;
-import com.example.kieran.attnedancetracker.tools.StudentAbsence;
 
 public class ReviewAttendanceScreen extends AppCompatActivity {
 
@@ -56,6 +57,16 @@ public class ReviewAttendanceScreen extends AppCompatActivity {
         dateLabel.setText("Todays date: "+ dateString);
 
         new GetStudents().execute();
+
+        Button myButton = (Button) findViewById(R.id.cancelBtn);
+        myButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                finish();
+
+            }
+        });
 
 
 
