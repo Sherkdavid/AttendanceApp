@@ -5,6 +5,7 @@ public class Faculty extends User{
 	
 	public Faculty(String id, String name, String mail, String department) {
 		super(id, name, mail);
+		setDepartment(department);
 	}
 	
 	public void setDepartment(String dept)
