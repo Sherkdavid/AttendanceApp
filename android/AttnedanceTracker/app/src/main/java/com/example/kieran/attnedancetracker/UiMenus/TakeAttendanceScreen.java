@@ -70,6 +70,17 @@ public class TakeAttendanceScreen extends Activity {
 
         checkButtonClick();
 
+        Button myButton = (Button) findViewById(R.id.cancelBtn);
+        myButton.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                finish();
+
+            }
+        });
+
+
     }
 
     private void displayListView() {
@@ -173,7 +184,7 @@ public class TakeAttendanceScreen extends Activity {
                 Toast.makeText(getApplicationContext(),
                         responseText, Toast.LENGTH_LONG).show();
 
-
+                finish();
 
             }
         });
@@ -220,9 +231,10 @@ public class TakeAttendanceScreen extends Activity {
             HashMap<String,String> map = new HashMap<>();
             map.put("class_id", class_id);
 
-            //Need better format for time
-            String date = (DateFormat.format("yyyy-mm-dd'T00:00:00'", new java.util.Date()).toString());
-            Log.d(TAG, "time check : " + date);
+            Timestamp a = new Timestamp(System.currentTimeMillis());
+            String date = a.toString();
+            Log.d(TAG, "time stampppppppp : " + a);
+
 
             //Increments the lecture count
             try {
@@ -230,7 +242,6 @@ public class TakeAttendanceScreen extends Activity {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
             //Sends data to servlet if student is marked as abscent
             ArrayList<StudentSelector> studentSelectorList = dataAdapter.studentSelectorList;
             for(int i = 0; i< studentSelectorList.size(); i++){
@@ -240,7 +251,7 @@ public class TakeAttendanceScreen extends Activity {
                         HashMap<String, String> param = new HashMap();
                         param.put("student_id", studentSelectorList.get(i).getCode());
                         param.put("class_id", class_id);
-                        param.put("date", date);
+                        param.put("date", Timestamp.valueOf(date).toString());
                         result = (String) req.sendPostRequest("InsertIntoAbsence", param);
                     } catch (Exception e) {
                         // TODO Auto-generated catch block
@@ -249,6 +260,7 @@ public class TakeAttendanceScreen extends Activity {
 
                 }
             }
+
             return result;
         }
 

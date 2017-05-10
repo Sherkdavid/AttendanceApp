@@ -6,13 +6,13 @@ package com.example.kieran.attnedancetracker;
 
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.example.kieran.attnedancetracker.tools.StudentAbsence;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -25,6 +25,7 @@ public class CustomAdapterReviewAttendance extends ArrayAdapter<Student>{
     ArrayList<Absence> absenceList = null;
     int lectureCount;
     Context context;
+
     public CustomAdapterReviewAttendance(Context context, ArrayList<Student> resource, ArrayList<Absence> absenceList, int lectureCount) {
         super(context, R.layout.row, resource);
         // TODO Auto-generated constructor stub

@@ -43,9 +43,7 @@ public class LecturerHomescreen extends AppCompatActivity {
 
             public void onClick(View arg0) {
 
-                Intent myIntent = new Intent(LecturerHomescreen.this,
-                        MainActivity.class);
-                startActivity(myIntent);
+                finish();
             }
         });
 

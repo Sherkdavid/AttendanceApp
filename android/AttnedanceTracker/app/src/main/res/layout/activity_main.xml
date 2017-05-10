@@ -30,7 +30,7 @@
             android:layout_below="@id/userlabel"
             android:layout_centerHorizontal="true"
             android:inputType="textPersonName"
-            android:text="F001"
+            android:text=""
             android:ems="10"
             android:id="@+id/userID" />
         <TextView
@@ -51,7 +51,7 @@
             android:layout_below="@id/passwordlabel"
             android:layout_centerHorizontal="true"
             android:inputType="textPassword"
-            android:text="letmein"
+            android:text=""
             android:ems="10"
             android:id="@+id/password" />
 

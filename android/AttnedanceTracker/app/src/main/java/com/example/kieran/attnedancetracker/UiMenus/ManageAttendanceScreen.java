@@ -24,7 +24,7 @@ public class ManageAttendanceScreen extends AppCompatActivity {
 
 
     private static final String TAG = "testing" ;
-    private Button takeAttendanceBtn, reviewAttendanceBtn;
+    private Button takeAttendanceBtn, reviewAttendanceBtn, backBtn;
     private Spinner moduleSpinner;
     String lecturer_id;
 
@@ -95,6 +95,14 @@ public class ManageAttendanceScreen extends AppCompatActivity {
                 myIntent.putExtra("moduleName", moduleName);
                 myIntent.putExtra("moduleId", moduleId);
                 startActivity(myIntent);
+            }
+        });
+
+        backBtn = (Button)findViewById(R.id.backBtn);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View arg0) {
+                finish();
             }
         });
 
