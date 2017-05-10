@@ -1,0 +1,12 @@
+<component name="ArtifactManager">
+  <artifact build-on-make="true" name="FacultyClient">
+    <output-path>$PROJECT_DIR$/out/artifacts/FacultyClient</output-path>
+    <root id="root">
+      <element id="archive" name="FacultyClient.jar">
+        <element id="module-output" name="FacultyClient" />
+        <element id="library" level="project" name="lib" />
+      </element>
+      <element id="dir-copy" path="$PROJECT_DIR$" />
+    </root>
+  </artifact>
+</component>

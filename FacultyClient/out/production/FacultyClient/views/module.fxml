@@ -5,43 +5,41 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ModuleController">
+<BorderPane fx:id="bp" prefHeight="341.0" prefWidth="748.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ModuleController">
    <top>
-      <Label fx:id="title" text="Label" BorderPane.alignment="CENTER">
+      <Label fx:id="title" styleClass="header" text="Label" BorderPane.alignment="CENTER">
          <font>
             <Font name="Arial Black" size="24.0" />
          </font></Label>
    </top>
    <center>
-      <VBox alignment="CENTER" prefHeight="293.0" prefWidth="469.0" spacing="20.0" BorderPane.alignment="CENTER">
+      <HBox fx:id="container" prefHeight="100.0" prefWidth="200.0" spacing="20.0" BorderPane.alignment="CENTER">
          <children>
-            <TableView fx:id="students" prefHeight="326.0" prefWidth="294.0">
-              <columns>
-                <TableColumn fx:id="nameCol" editable="false" prefWidth="176.0" text="Lecturer" />
-                <TableColumn fx:id="idCol" editable="false" prefWidth="118.0" text="Class ID" />
-                  <TableColumn prefWidth="73.0" text="Enrolled" />
-                  <TableColumn prefWidth="101.0" text="Avg Attendance" />
-              </columns>
-            </TableView>
+            <VBox prefHeight="289.0" prefWidth="301.0" spacing="20.0">
+               <children>
+                  <Label fx:id="id" styleClass="header" text="Label">
+                     <font>
+                        <Font name="Arial Black" size="20.0" />
+                     </font>
+                  </Label>
+                  <Button mnemonicParsing="false" onAction="#createClass" prefHeight="49.0" prefWidth="178.0" text="New Class">
+                     <font>
+                        <Font name="Arial Black" size="19.0" />
+                     </font>
+                  </Button>
+                  <TableView fx:id="tableview" prefHeight="275.0" prefWidth="345.0">
+                    <columns>
+                      <TableColumn fx:id="lecturerCol" editable="false" prefWidth="107.0" text="Lecturer" />
+                      <TableColumn fx:id="idCol" editable="false" prefWidth="190.99998474121094" text="Class ID" />
+                    </columns>
+                  </TableView>
+               </children>
+            </VBox>
          </children>
-      </VBox>
+      </HBox>
    </center>
-   <right>
-      <VBox prefHeight="308.0" prefWidth="141.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label fx:id="id" text="Label">
-               <font>
-                  <Font name="Arial Black" size="20.0" />
-               </font></Label>
-            <Button mnemonicParsing="false" prefHeight="49.0" prefWidth="138.0" text="Manage">
-               <font>
-                  <Font name="Arial Black" size="19.0" />
-               </font>
-            </Button>
-         </children>
-      </VBox>
-   </right>
 </BorderPane>

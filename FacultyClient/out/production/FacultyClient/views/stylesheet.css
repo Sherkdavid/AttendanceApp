@@ -1,8 +1,15 @@
 .button {
 -fx-background-color: azure;
-
 }
 .root
 {
 -fx-background-color: silver;
+}
+.custom-label
+{
+    -fx-font: 12px "Arial Black";
+}
+.header
+{
+    -fx-font: 16px "Arial Black";
 }
