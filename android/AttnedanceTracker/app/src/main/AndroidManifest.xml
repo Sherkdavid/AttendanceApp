@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -18,15 +19,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".UiMenus.StudentHomescreen" />
+
         <activity android:name=".UiMenus.LecturerHomescreen" />
         <activity android:name=".UiMenus.ManageAttendanceScreen" />
         <activity android:name=".UiMenus.TakeAttendanceScreen" />
         <activity android:name=".UiMenus.ReviewAttendanceScreen" />
-        <activity android:name=".ViewTimetable" />
-        <activity android:name=".test.testForData2" />
-        <activity android:name=".UiMenus.listTesting" />
-        <activity android:name=".test.listTest" />
+
+
         <activity android:name=".test.studentselectortest"></activity>
     </application>
 

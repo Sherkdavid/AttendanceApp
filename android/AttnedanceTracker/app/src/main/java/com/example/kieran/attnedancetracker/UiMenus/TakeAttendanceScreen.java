@@ -1,6 +1,9 @@
 package com.example.kieran.attnedancetracker.UiMenus;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.sql.Timestamp;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -11,6 +14,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Environment;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -31,6 +35,7 @@ import java.util.Date;
 import com.example.kieran.attnedancetracker.R;
 import com.example.kieran.attnedancetracker.tools.StudentSelector;
 import com.example.kieran.attnedancetracker.tools.ServletInterfaceController;
+import com.opencsv.CSVWriter;
 
 import model.Student;
 
@@ -267,12 +272,14 @@ public class TakeAttendanceScreen extends Activity {
         @Override
         protected void onPostExecute(String result) {
 
-            Log.d(TAG, "succes or nah: " + result);
+            Log.d(TAG, "succes or no: " + result);
 
 
 
         }
     }
+
+
 
 
 }

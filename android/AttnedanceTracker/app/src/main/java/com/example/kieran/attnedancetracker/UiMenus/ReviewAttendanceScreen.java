@@ -2,6 +2,7 @@ package com.example.kieran.attnedancetracker.UiMenus;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.View;
@@ -9,6 +10,10 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,6 +24,7 @@ import model.Absence;
 import model.Student;
 import com.example.kieran.attnedancetracker.R;
 import com.example.kieran.attnedancetracker.tools.ServletInterfaceController;
+import com.opencsv.CSVWriter;
 
 public class ReviewAttendanceScreen extends AppCompatActivity {
 
@@ -63,6 +69,17 @@ public class ReviewAttendanceScreen extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+                finish();
+
+            }
+        });
+
+        Button savecsvBtn = (Button) findViewById(R.id.savecsvBtn);
+        savecsvBtn.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                savecsv();
                 finish();
 
             }
@@ -120,6 +137,49 @@ public class ReviewAttendanceScreen extends AppCompatActivity {
         listViewOfStudents = (ListView) findViewById(R.id.listView1);
         CustomAdapterReviewAttendance adapter = new CustomAdapterReviewAttendance(this, studentList, absenceList, lectureCount);
         listViewOfStudents.setAdapter(adapter);
+
+    }
+
+
+    public void savecsv()
+    {
+        String filename = "attendnace_"+class_Id+".csv";
+
+        File file = new File(Environment.getExternalStorageDirectory(), filename);
+
+
+
+
+        saveAttendanceToCSV(file);
+
+    }
+
+    private void saveAttendanceToCSV(File file) {
+        try {
+            String pattern = "###.##";
+            DecimalFormat df = new DecimalFormat(pattern);
+            CSVWriter writer = new CSVWriter(new FileWriter(file));
+            writer.writeNext(new String[]{"Name", "ID", "Attendance"});
+
+            for(int i=0;i<studentList.size();i++)
+            {
+                double numberOfAbsences = 0;
+                for (int x = 0; x<absenceList.size(); x++)
+                {
+                    if (studentList.get(i).getId().equals(absenceList.get(x).getStudent()))
+                    {
+                        numberOfAbsences = numberOfAbsences +1;
+                    }
+                }
+                writer.writeNext(new String[]{studentList.get(i).getName(), studentList.get(i).getId(),
+                        df.format(((lectureCount -numberOfAbsences) / lectureCount) * 100)+"%"});
+            }
+
+            writer.flush();
+            writer.close();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
 
     }
 

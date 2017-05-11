@@ -28,4 +28,5 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:22.2.1'
     testCompile 'junit:junit:4.12'
+    compile files('libs/opencsv-3.9.jar')
 }
